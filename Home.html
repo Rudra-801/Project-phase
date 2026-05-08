@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UniSmart | Personalized Recommendation System</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:linear-gradient(135deg,#041250,#870e02);
+min-height:100vh;
+color:white;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 50px;
+background:#06011f;
+box-shadow:0 4px 15px rgba(0,0,0,0.4);
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+color:#11e8ff;
+}
+
+#authBtn{
+padding:12px 35px;
+border:none;
+border-radius:10px;
+background:#ff7a18;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+#authBtn:hover{
+transform:scale(1.05);
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:70px 30px;
+}
+
+.hero h1{
+font-size:52px;
+color:#11e8ff;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+color:#d6faff;
+margin-bottom:60px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+max-width:1300px;
+margin:auto;
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+padding:50px 25px;
+border-radius:20px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 8px 25px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+background:#ff7a18;
+}
+
+.card h2{
+font-size:34px;
+margin-bottom:20px;
+}
+
+.card p{
+font-size:18px;
+line-height:1.5;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.navbar{
+padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">
+Personalized Recommendation System 🎓
+</div>
+
+<div id="loginArea">
+
+<button id="authBtn" onclick="goLogin()">
+Login
+</button>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>
+Welcome to Personalized Recommendation System
+</h1>
+
+<p>
+Your all-in-one student platform for academics, careers, community support & smart planning.
+</p>
+
+<!-- CARDS -->
+
+<div class="grid">
+
+<div class="card"
+onclick="openPage('academics.html')">
+
+<h2>📚 Academics</h2>
+
+<p>
+Notes, YouTube playlists, research papers, practice questions & study material.
+</p>
+
+</div>
+
+<div class="card"
+onclick="openPage('career.html')">
+
+<h2>🎯 Career</h2>
+
+<p>
+Career roadmaps, internships, engineering roles, skills & interview prep.
+</p>
+
+</div>
+
+<div class="card"
+onclick="openPage('community.html')">
+
+<h2>💬 Community</h2>
+
+<p>
+Connect with students, share posts, ask doubts & discuss projects.
+</p>
+
+</div>
+
+<div class="card"
+onclick="openPage('planner.html')">
+
+<h2>📅 Planner</h2>
+
+<p>
+Track tasks, assignments, goals & improve productivity.
+</p>
+
+</div>
+
+<div class="card"
+onclick="openPage('dashboard.html')">
+
+<h2>📊 Dashboard</h2>
+
+<p>
+View tasks, posts, recommendations, productivity stats & student analytics.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

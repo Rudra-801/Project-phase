@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+<h2>Academics</h2>
+<a href="Home.html">Home</a>
+</nav>
+
+<div class="container center-box">
+
+<h1>Select Learning Content</h1>
+
+<div class="selectors">
+<select id="subject" onchange="loadData()"></select>
+
+<select id="level" onchange="loadData()">
+<option value="beginner">Beginner</option>
+<option value="intermediate">Intermediate</option>
+<option value="advanced">Advanced</option>
+</select>
+</div>
+
+<div id="content"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

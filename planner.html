@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Personalized Recommendation System</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:linear-gradient(135deg,#041250,#870e02);
+color:white;
+min-height:100vh;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#06011f;
+}
+
+.container{
+padding:40px;
+}
+
+.title{
+text-align:center;
+font-size:45px;
+margin-bottom:40px;
+color:#00e5ff;
+}
+
+.planner-box{
+max-width:700px;
+margin:auto;
+background:rgba(255,255,255,0.08);
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.input-group{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.input-group input{
+flex:1;
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+.input-group button{
+padding:15px 25px;
+border:none;
+border-radius:10px;
+background:#ff7a18;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.input-group button:hover{
+background:#ff5500;
+}
+
+.task-list{
+margin-top:30px;
+padding:0;
+}
+
+.task-list li{
+list-style:none;
+background:rgba(255,255,255,0.08);
+padding:15px;
+margin-bottom:15px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:18px;
+}
+
+.task-actions{
+display:flex;
+gap:10px;
+}
+
+.complete-btn{
+background:green;
+padding:8px 12px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+}
+
+.delete-btn{
+background:red;
+padding:8px 12px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+}
+
+.completed{
+text-decoration:line-through;
+opacity:0.6;
+}
+
+.stats{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-bottom:30px;
+flex-wrap:wrap;
+}
+
+.stat-card{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:15px;
+min-width:180px;
+text-align:center;
+}
+
+.stat-card h2{
+color:#00e5ff;
+font-size:35px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<h2>
+Personalized Recommendation System
+</h2>
+
+<div>
+
+<a href="home.html"
+style="
+color:white;
+text-decoration:none;
+margin-right:20px;
+">
+Home
+</a>
+
+</div>
+
+</nav>
+
+<!-- MAIN -->
+
+<div class="container">
+
+<h1 class="title">
+📅 Smart Planner
+</h1>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-card">
+<h2 id="totalTasks">0</h2>
+<p>Total Tasks</p>
+</div>
+
+<div class="stat-card">
+<h2 id="completedTasks">0</h2>
+<p>Completed</p>
+</div>
+
+</div>
+
+<!-- PLANNER -->
+
+<div class="planner-box">
+
+<div class="input-group">
+
+<input
+type="text"
+id="taskInput"
+placeholder="Enter your task">
+
+<button onclick="addTask()">
+Add Task
+</button>
+
+</div>
+
+<ul id="taskList"
+class="task-list">
+</ul>
+
+</div>
+
+</div>
+
+<script>
+
+// ================= LOAD TASKS =================
+
+function loadTasks(){
+
+let tasks =
+JSON.parse(localStorage.getItem("plannerTasks")) || [];
+
+let taskList =
+document.getElementById("taskList");
+
+taskList.innerHTML = "";
+
+let completedCount = 0;
+
+tasks.forEach((task,index)=>{
+
+if(task.completed){
+completedCount++;
+}
+
+taskList.innerHTML += `
+
+<li class="${task.completed ? 'completed' : ''}">
+
+<span>
+${task.text}
+</span>
+
+<div class="task-actions">
+
+<button
+class="complete-btn"
+onclick="completeTask(${index})">
+
+✔
+
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteTask(${index})">
+
+X
+
+</button>
+
+</div>
+
+</li>
+
+`;
+
+});
+
+document.getElementById("totalTasks")
+.innerText = tasks.length;
+
+document.getElementById("completedTasks")
+.innerText = completedCount;
+
+}
+
+// ================= ADD TASK =================
+
+function addTask(){
+
+let input =
+document.getElementById("taskInput");
+
+let value =
+input.value.trim();
+
+if(value === ""){
+
+alert("Enter Task");
+return;
+
+}
+
+let tasks =
+JSON.parse(localStorage.getItem("plannerTasks")) || [];
+
+tasks.push({
+
+text:value,
+completed:false
+
+});
+
+localStorage.setItem(
+"plannerTasks",
+JSON.stringify(tasks)
+);
+
+input.value = "";
+
+loadTasks();
+
+}
+
+// ================= COMPLETE TASK =================
+
+function completeTask(index){
+
+let tasks =
+JSON.parse(localStorage.getItem("plannerTasks")) || [];
+
+tasks[index].completed =
+!tasks[index].completed;
+
+localStorage.setItem(
+"plannerTasks",
+JSON.stringify(tasks)
+);
+
+loadTasks();
+
+}
+
+// ================= DELETE TASK =================
+
+function deleteTask(index){
+
+let tasks =
+JSON.parse(localStorage.getItem("plannerTasks")) || [];
+
+tasks.splice(index,1);
+
+localStorage.setItem(
+"plannerTasks",
+JSON.stringify(tasks)
+);
+
+loadTasks();
+
+}
+
+// ================= INIT =================
+
+loadTasks();
+
+</script>
+
+</body>
+</html>

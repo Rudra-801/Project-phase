@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Career Guidance</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<h2>
+Career Guidance 🎯
+</h2>
+
+<div>
+
+<a href="home.html"
+style="
+color:white;
+text-decoration:none;
+font-size:18px;
+font-weight:bold;
+">
+Home
+</a>
+
+</div>
+
+</nav>
+
+<!-- MAIN -->
+
+<div class="container">
+
+<h1 class="topic-title">
+Choose Your Engineering Branch
+</h1>
+
+<!-- BRANCH SELECT -->
+
+<div class="center-box">
+
+<select id="branch"
+onchange="loadCareer()">
+
+<option value="">
+Select Branch
+</option>
+
+<option value="cse">
+Computer Science (CSE)
+</option>
+
+<option value="it">
+Information Technology (IT)
+</option>
+
+<option value="ece">
+Electronics & Communication (ECE)
+</option>
+
+<option value="ee">
+Electrical Engineering (EE)
+</option>
+
+<option value="me">
+Mechanical Engineering
+</option>
+
+<option value="civil">
+Civil Engineering
+</option>
+
+<option value="ai">
+Artificial Intelligence
+</option>
+
+<option value="ds">
+Data Science
+</option>
+
+<option value="cyber">
+Cyber Security
+</option>
+
+<option value="robotics">
+Robotics
+</option>
+
+</select>
+
+</div>
+
+<!-- CAREER CARDS -->
+
+<div id="careerBox"
+class="content-grid">
+</div>
+
+<!-- POPUP -->
+
+<div id="careerDetail"
+class="career-detail hidden">
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
