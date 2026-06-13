@@ -3,257 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Dashboard</title>
-
-<link rel="stylesheet" href="style.css">
+<title>Student Dashboard | NEXZO</title>
+<link rel="stylesheet" href="style.css?v=20260613-6">
 <link rel="icon" type="image/png" href="favicon.png">
-
 </head>
 <body>
 
 <nav class="navbar">
+<link rel="icon" type="image/png" href="favicon.png">
+            <img
+                src="favicon.png"
+                alt="Logo"
+                class="site-logo"
+            >
 
-<h2 class="logo-title">
-🎓 Dashboard
-</h2>
+            
+            <h2 class="logo-text">Smart Planner</h2>
+
 
 <div class="nav-right">
-
-<a href="home.html" class="nav-home">
-🏠 Home
-</a>
+<a href="Home.html" class="nav-home">🏠Home</a>
 
 <div class="user-menu">
-
-<button class="user-btn" onclick="toggleMenu()">
-
-<div class="user-icon">
-👤
-</div>
-
-Hi, User ⌄
-
+<button class="user-btn" type="button" onclick="toggleMenu()" aria-expanded="false">
+<div class="user-icon" id="dashboardUserInitial">N</div>
+<span id="dashboardUserName">Account</span>
+<span aria-hidden="true">&#9662;</span>
 </button>
 
 <div class="dropdown" id="dropdownMenu">
-
-<a href="#" onclick="openProfile()">
-👤 My Profile
-</a>
-
-<a href="#" onclick="openSettings()">
-⚙️ Settings
-</a>
-
-<button
-class="logout-btn"
-onclick="logout()">
-
-↪ Logout
-
-</button>
-
+<button type="button" onclick="openProfile()">My Profile</button>
+<button type="button" onclick="openSettings()">Settings</button>
+<button type="button" class="logout-btn" onclick="logout()">Logout</button>
 </div>
-
 </div>
-
 </div>
-
 </nav>
 
-<div class="dashboard-container">
-
-<h1 class="dashboard-title">
-📊 Student Dashboard
-</h1>
+<main class="dashboard-container">
+<h1 class="dashboard-title">Student Dashboard</h1>
 
 <div class="stats">
-
-<div class="stat-box">
-<h3 id="taskCount">0</h3>
-<p>Total Tasks</p>
-</div>
-
-<div class="stat-box">
-<h3 id="postCount">0</h3>
-<p>Community Posts</p>
-</div>
-
-<div class="stat-box">
-<h3 id="recommendField">AI/ML</h3>
-<p>Recommended Field</p>
-</div>
-
+<div class="stat-box"><h3 id="taskCount">0</h3><p>Total Tasks</p></div>
+<div class="stat-box"><h3 id="postCount">0</h3><p>Community Posts</p></div>
+<div class="stat-box"><h3 id="recommendField">Loading...</h3><p>Recommended Field</p></div>
 </div>
 
 <div class="dashboard-grid">
+<section class="dashboard-card">
+<h2>Tasks Planner</h2>
+<input type="text" id="taskInput" placeholder="Enter your task">
+<button type="button" onclick="addTask()">Add Task</button>
+<ul id="taskList" class="dashboard-list"></ul>
+</section>
 
-<div class="dashboard-card">
+<section class="dashboard-card">
+<h2>Community Posts</h2>
+<input type="text" id="postInput" placeholder="Share your thoughts">
+<button type="button" onclick="addPost()">Post</button>
+<ul id="postList" class="dashboard-list"></ul>
+</section>
 
-<h2>📅 Tasks Planner</h2>
-
-<input
-type="text"
-id="taskInput"
-placeholder="Enter your task">
-
-<button onclick="addTask()">
-Add Task
-</button>
-
-<ul
-id="taskList"
-class="dashboard-list">
-</ul>
-
-</div>
-
-<div class="dashboard-card">
-
-<h2>💬 Community Posts</h2>
-
-<input
-type="text"
-id="postInput"
-placeholder="Share your thoughts">
-
-<button onclick="addPost()">
-Post
-</button>
-
-<ul
-id="postList"
-class="dashboard-list">
-</ul>
-
-</div>
-
-<div class="dashboard-card">
-
-<h2>🎯 Recommendations</h2>
-
+<section class="dashboard-card">
+<h2>Recommendations</h2>
 <ul class="dashboard-list">
-
-<li>
-<a href="academics.html" class="rec-link">
-📘 Learn DSA & Problem Solving
-</a>
-</li>
-
-<li>
-<a href="academics.html" class="rec-link">
-🤖 Explore Machine Learning
-</a>
-</li>
-
-<li>
-<a href="career.html" class="rec-link">
-🌐 Full Stack Development
-</a>
-</li>
-
-<li>
-<a href="career.html" class="rec-link">
-☁️ Cloud Computing
-</a>
-</li>
-
-<li>
-<a href="career.html" class="rec-link">
-🔐 Cyber Security
-</a>
-</li>
-
+<li><a href="academics.html" class="rec-link">Learn DSA and Problem Solving</a></li>
+<li><a href="academics.html" class="rec-link">Explore Machine Learning</a></li>
+<li><a href="career.html" class="rec-link">Full Stack Development</a></li>
+<li><a href="career.html" class="rec-link">Cloud Computing</a></li>
+<li><a href="career.html" class="rec-link">Cyber Security</a></li>
 </ul>
-
+</section>
 </div>
+</main>
 
-</div>
-
-</div>
-
-<!-- PROFILE MODAL -->
-
-<div id="profileModal" class="modal hidden">
-
+<div id="profileModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
 <div class="modal-box">
+<h2 id="profileTitle">My Profile</h2>
 
-<h2>👤 My Profile</h2>
-
-<p>
-<b>Name:</b>
-<span id="profileName">
-User
-</span>
-</p>
-
-<p>
-<b>Email:</b>
-<span id="profileEmail">
-user@email.com
-</span>
-</p>
-
-<p>
-<b>Total Tasks:</b>
-<span id="profileTasks">
-0
-</span>
-</p>
-
-<p>
-<b>Total Posts:</b>
-<span id="profilePosts">
-0
-</span>
-</p>
-
-<input
-type="text"
-id="newName"
-placeholder="Change Username">
-
-<button onclick="changeUsername()">
-Save Name
-</button>
-
-<button onclick="closeProfile()">
-Close
-</button>
-
+<div class="profile-info">
+<p><b>Name</b><span id="profileDisplayName">Loading...</span></p>
+<p><b>Email</b><span id="profileEmail">Loading...</span></p>
+<p><b>Total Tasks</b><span id="profileTasks">0</span></p>
+<p><b>Community Posts</b><span id="profilePosts">0</span></p>
 </div>
 
+<label class="profile-field" for="newName">Name</label>
+<input type="text" id="newName" maxlength="60" placeholder="Your name">
+
+<label class="profile-field" for="profileInterest">Interest</label>
+<input type="text" id="profileInterest" maxlength="80" placeholder="Example: AI / Machine Learning">
+
+<label class="profile-field" for="profileBranch">Branch</label>
+<input type="text" id="profileBranch" maxlength="80" placeholder="Example: Computer Science">
+
+<button type="button" onclick="saveProfile()">Save Profile</button>
+<button type="button" class="secondary-modal-btn" onclick="closeProfile()">Close</button>
+</div>
 </div>
 
-<!-- SETTINGS MODAL -->
-
-<div id="settingsModal" class="modal hidden">
-
+<div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
 <div class="modal-box">
-
-<h2>⚙️ Settings</h2>
-
-<button onclick="toggleTheme()">
-🌙 Dark / Light Mode
-</button>
-
-<button onclick="resetAllData()">
-🗑 Reset Tasks & Posts
-</button>
-
-<button onclick="logout()">
-🚪 Logout
-</button>
-
-<button onclick="closeSettings()">
-Close
-</button>
-
+<h2 id="settingsTitle">Settings</h2>
+<button type="button" onclick="toggleTheme()">Toggle Display Mode</button>
+<button type="button" onclick="resetAllData()">Delete My Tasks and Posts</button>
+<button type="button" onclick="logout()">Logout</button>
+<button type="button" class="secondary-modal-btn" onclick="closeSettings()">Close</button>
+</div>
 </div>
 
-</div>
-
-<script src="script.js"></script>
-
+<script src="script.js?v=20260613-6"></script>
 </body>
 </html>
