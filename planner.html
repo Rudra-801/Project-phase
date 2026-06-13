@@ -3,9 +3,9 @@
 
 <head>
 
-<title>Smart Planner</title>
+<title>Smart Planner | NEXZO</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20260613-6">
 
 <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -15,14 +15,21 @@
 <!-- NAVBAR -->
 
 <nav class="navbar">
+<link rel="icon" type="image/png" href="favicon.png">
+            <img
+                src="favicon.png"
+                alt="Logo"
+                class="site-logo"
+            >
 
-<h2>
-🎓 Personalized Recommendation System
-</h2>
+            
+            <h2 class="logo-text">Smart Planner</h2>
 
-<a href="Home.html">
-🏠Home
-</a>
+
+<div class="nav-right">
+<a href="Home.html" class="nav-home">🏠Home</a>
+
+</nav>
 
 </nav>
 
@@ -34,9 +41,7 @@
 
 <div class="planner-heading">
 
-<h1>
-🗓️ Smart Planner
-</h1>
+
 
 <p>
 Track your real study progress & complete tasks before deadline 🚀
@@ -91,101 +96,63 @@ type="text"
 id="plannerTaskInput"
 placeholder="Enter task">
 
-<select id="plannerSuggestion">
-
-<option>
-Choose Suggested Task
-</option>
-
-<option>
-DSA Practice
-</option>
-
-<option>
-Frontend Development
-</option>
-
-<option>
-Backend Development
-</option>
-
-<option>
-React Revision
-</option>
-
-<option>
-DBMS Revision
-</option>
-
-<option>
-LeetCode Contest
-</option>
-
-<option>
-AI Model Training
-</option>
-
-<option>
-Machine Learning
-</option>
-
-</select>
+<div class="option-picker planner-picker" id="plannerSuggestionPicker">
+<input type="hidden" id="plannerSuggestion" value="Choose Suggested Task">
+<button class="option-picker-trigger" type="button" onclick="toggleOptionPicker('plannerSuggestionPicker', event)">
+<span>Choose Suggested Task</span><span class="option-picker-arrow"></span>
+</button>
+<div class="option-picker-menu">
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','Choose Suggested Task','Choose Suggested Task',event)">Choose Suggested Task</button>
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','DSA Practice','DSA Practice',event)">DSA Practice</button>
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','Frontend Development','Frontend Development',event)">Frontend Development</button>
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','Backend Development','Backend Development',event)">Backend Development</button>
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','React Revision','React Revision',event)">React Revision</button>
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','DBMS Revision','DBMS Revision',event)">DBMS Revision</button>
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','LeetCode Contest','LeetCode Contest',event)">LeetCode Contest</button>
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','AI Model Training','AI Model Training',event)">AI Model Training</button>
+<button type="button" onclick="chooseOption('plannerSuggestionPicker','plannerSuggestion','Machine Learning','Machine Learning',event)">Machine Learning</button>
+</div>
+</div>
 
 <input
 type="number"
 id="plannerHours"
 placeholder="Hours">
 
-<select id="plannerDays">
+<div class="option-picker planner-picker" id="plannerDaysPicker">
+<input type="hidden" id="plannerDays" value="1 Day">
+<button class="option-picker-trigger" type="button" onclick="toggleOptionPicker('plannerDaysPicker', event)">
+<span>1 Day</span><span class="option-picker-arrow"></span>
+</button>
+<div class="option-picker-menu">
+<button class="is-selected" type="button" onclick="chooseOption('plannerDaysPicker','plannerDays','1 Day','1 Day',event)">1 Day</button>
+<button type="button" onclick="chooseOption('plannerDaysPicker','plannerDays','2 Days','2 Days',event)">2 Days</button>
+<button type="button" onclick="chooseOption('plannerDaysPicker','plannerDays','3 Days','3 Days',event)">3 Days</button>
+<button type="button" onclick="chooseOption('plannerDaysPicker','plannerDays','5 Days','5 Days',event)">5 Days</button>
+<button type="button" onclick="chooseOption('plannerDaysPicker','plannerDays','7 Days','7 Days',event)">7 Days</button>
+</div>
+</div>
 
-<option>
-1 Day
-</option>
-
-<option>
-2 Days
-</option>
-
-<option>
-3 Days
-</option>
-
-<option>
-5 Days
-</option>
-
-<option>
-7 Days
-</option>
-
-</select>
-
-<select id="plannerCategory">
-
-<option>
-DSA
-</option>
-
-<option>
-Development
-</option>
-
-<option>
-Revision
-</option>
-
-<option>
-Project
-</option>
-
-</select>
+<div class="option-picker planner-picker" id="plannerCategoryPicker">
+<input type="hidden" id="plannerCategory" value="DSA">
+<button class="option-picker-trigger" type="button" onclick="toggleOptionPicker('plannerCategoryPicker', event)">
+<span>DSA</span><span class="option-picker-arrow"></span>
+</button>
+<div class="option-picker-menu">
+<button class="is-selected" type="button" onclick="chooseOption('plannerCategoryPicker','plannerCategory','DSA','DSA',event)">DSA</button>
+<button type="button" onclick="chooseOption('plannerCategoryPicker','plannerCategory','Development','Development',event)">Development</button>
+<button type="button" onclick="chooseOption('plannerCategoryPicker','plannerCategory','Revision','Revision',event)">Revision</button>
+<button type="button" onclick="chooseOption('plannerCategoryPicker','plannerCategory','Project','Project',event)">Project</button>
+</div>
+</div>
 
 </div>
 
 <!-- BUTTON -->
 
 <button
-class="add-task-btn">
+class="add-task-btn"
+onclick="addPlannerTask()">
 
 Add Smart Task 🚀
 
@@ -195,56 +162,8 @@ Add Smart Task 🚀
 
 <div class="planner-task-list">
 
-<!-- TASK CARD -->
-
 <div class="planner-task-card">
-
-<div class="planner-task-top">
-
-<div class="planner-task-title">
-AI
-</div>
-
-<div class="planner-badge">
-Project
-</div>
-
-</div>
-
-<div class="planner-details">
-
-⏰ Daily Hours:
-<b>6 hrs</b>
-<br>
-
-📅 Max Time:
-<b>7 Day(s)</b>
-<br>
-
-📚 Study Done:
-<b>420 mins</b>
-<br>
-
-📌 Status:
-✅ <b>Completed</b>
-<br>
-
-📈 Progress:
-<b>100%</b>
-
-</div>
-
-<!-- PROGRESS -->
-
-<div class="planner-progress-bar">
-
-<div
-class="planner-progress"
-style="width:100%">
-</div>
-
-</div>
-
+<p>Loading tasks...</p>
 </div>
 
 </div>
@@ -263,7 +182,8 @@ style="width:100%">
 💡 Smart Suggestions
 </h3>
 
-<div class="suggestion-card">
+<button class="suggestion-card" type="button"
+onclick="applyPlannerTemplate('DSA Practice','DSA',2,'7 Days')">
 
 <h4>
 📘 DSA Roadmap
@@ -275,10 +195,11 @@ style="width:100%">
 ✔ Trees & Graphs<br>
 ✔ Daily LeetCode Practice
 </p>
+<span class="suggestion-action">Use this plan &rarr;</span>
+</button>
 
-</div>
-
-<div class="suggestion-card">
+<button class="suggestion-card" type="button"
+onclick="applyPlannerTemplate('Frontend Development','Development',3,'7 Days')">
 
 <h4>
 💻 Development Plan
@@ -290,10 +211,11 @@ style="width:100%">
 ✔ ReactJS<br>
 ✔ Backend APIs
 </p>
+<span class="suggestion-action">Use this plan &rarr;</span>
+</button>
 
-</div>
-
-<div class="suggestion-card">
+<button class="suggestion-card" type="button"
+onclick="applyPlannerTemplate('DBMS Revision','Revision',2,'5 Days')">
 
 <h4>
 📚 Revision Strategy
@@ -305,8 +227,8 @@ style="width:100%">
 ✔ Revise CN<br>
 ✔ Take Short Notes
 </p>
-
-</div>
+<span class="suggestion-action">Use this plan &rarr;</span>
+</button>
 
 </div>
 
@@ -320,21 +242,10 @@ style="width:100%">
 
 <ul>
 
-<li>
-Complete hardest task first
-</li>
-
-<li>
-Track progress daily
-</li>
-
-<li>
-Stay consistent
-</li>
-
-<li>
-Finish task before deadline
-</li>
+<li><button type="button" class="productivity-tip" data-tip="hardest" onclick="toggleProductivityTip(this)">Complete hardest task first</button></li>
+<li><button type="button" class="productivity-tip" data-tip="track" onclick="toggleProductivityTip(this)">Track progress daily</button></li>
+<li><button type="button" class="productivity-tip" data-tip="consistent" onclick="toggleProductivityTip(this)">Stay consistent</button></li>
+<li><button type="button" class="productivity-tip" data-tip="deadline" onclick="toggleProductivityTip(this)">Finish task before deadline</button></li>
 
 </ul>
 
@@ -346,7 +257,8 @@ Finish task before deadline
 
 </div>
 
+<script src="script.js?v=20260613-6"></script>
+
 </body>
 
 </html>
-
