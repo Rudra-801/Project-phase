@@ -76,6 +76,7 @@ body{
     );
 
     -webkit-background-clip:text;
+    background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
@@ -3979,6 +3980,7 @@ body::before{
 .dashboard-title,
 .career-heading h1{
     background:linear-gradient(90deg,#ffe08a,#ffb300,#ff8800);
+    background-clip:text;
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     text-shadow:none;
@@ -4109,6 +4111,7 @@ body::after{
 .logo-title{
     color:#ffb300!important;
     background:linear-gradient(90deg,#ffd66b,#ffb300,#ff8800)!important;
+    background-clip:text!important;
     -webkit-background-clip:text!important;
     -webkit-text-fill-color:transparent!important;
     text-shadow:none!important;
@@ -4148,6 +4151,7 @@ body::after{
 .career-heading h1{
     color:#ffb300!important;
     background:linear-gradient(90deg,#ffe59a,#ffb300,#ff8800)!important;
+    background-clip:text!important;
     -webkit-background-clip:text!important;
     -webkit-text-fill-color:transparent!important;
     text-shadow:0 16px 42px rgba(0,0,0,.48)!important;
@@ -4567,6 +4571,7 @@ button:hover,
         #ff8800
     );
 
+    background-clip:text;
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
