@@ -3,144 +3,11 @@
 
 <head>
 
-<title>Personalized Recommendation System</title>
+<title>Smart Planner</title>
 
 <link rel="stylesheet" href="style.css">
 
-<style>
-
-body{
-margin:0;
-font-family:Segoe UI;
-background:linear-gradient(135deg,#041250,#870e02);
-color:white;
-min-height:100vh;
-}
-
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-background:#06011f;
-}
-
-.container{
-padding:40px;
-}
-
-.title{
-text-align:center;
-font-size:45px;
-margin-bottom:40px;
-color:#00e5ff;
-}
-
-.planner-box{
-max-width:700px;
-margin:auto;
-background:rgba(255,255,255,0.08);
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-}
-
-.input-group{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.input-group input{
-flex:1;
-padding:15px;
-border:none;
-border-radius:10px;
-font-size:16px;
-}
-
-.input-group button{
-padding:15px 25px;
-border:none;
-border-radius:10px;
-background:#ff7a18;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-.input-group button:hover{
-background:#ff5500;
-}
-
-.task-list{
-margin-top:30px;
-padding:0;
-}
-
-.task-list li{
-list-style:none;
-background:rgba(255,255,255,0.08);
-padding:15px;
-margin-bottom:15px;
-border-radius:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:18px;
-}
-
-.task-actions{
-display:flex;
-gap:10px;
-}
-
-.complete-btn{
-background:green;
-padding:8px 12px;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-}
-
-.delete-btn{
-background:red;
-padding:8px 12px;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-}
-
-.completed{
-text-decoration:line-through;
-opacity:0.6;
-}
-
-.stats{
-display:flex;
-justify-content:center;
-gap:20px;
-margin-bottom:30px;
-flex-wrap:wrap;
-}
-
-.stat-card{
-background:rgba(255,255,255,0.08);
-padding:20px;
-border-radius:15px;
-min-width:180px;
-text-align:center;
-}
-
-.stat-card h2{
-color:#00e5ff;
-font-size:35px;
-}
-
-</style>
-
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
@@ -150,217 +17,336 @@ font-size:35px;
 <nav class="navbar">
 
 <h2>
-Personalized Recommendation System
+🎓 Personalized Recommendation System
 </h2>
 
-<div>
-
-<a href="home.html"
-style="
-color:white;
-text-decoration:none;
-margin-right:20px;
-">
-Home
+<a href="Home.html">
+🏠Home
 </a>
-
-</div>
 
 </nav>
 
-<!-- MAIN -->
+<!-- SMART PLANNER -->
 
-<div class="container">
+<div class="planner-container">
 
-<h1 class="title">
-📅 Smart Planner
+<!-- HEADING -->
+
+<div class="planner-heading">
+
+<h1>
+🗓️ Smart Planner
 </h1>
+
+<p>
+Track your real study progress & complete tasks before deadline 🚀
+</p>
+
+</div>
 
 <!-- STATS -->
 
-<div class="stats">
+<div class="stats-grid">
 
 <div class="stat-card">
-<h2 id="totalTasks">0</h2>
-<p>Total Tasks</p>
+<h2 id="totalTasks">1</h2>
+<p>Total</p>
 </div>
 
 <div class="stat-card">
-<h2 id="completedTasks">0</h2>
+<h2 id="runningTasks">0</h2>
+<p>Running</p>
+</div>
+
+<div class="stat-card">
+<h2 id="completedTasks">1</h2>
 <p>Completed</p>
 </div>
 
+<div class="stat-card">
+<h2 id="blockedTasks">0</h2>
+<p>Blocked</p>
 </div>
 
-<!-- PLANNER -->
+</div>
+
+<!-- MAIN GRID -->
+
+<div class="planner-top-grid">
+
+<!-- LEFT -->
 
 <div class="planner-box">
 
-<div class="input-group">
+<h2>
+➕ Create New Task
+</h2>
+
+<!-- FORM -->
+
+<div class="planner-form">
 
 <input
 type="text"
-id="taskInput"
-placeholder="Enter your task">
+id="plannerTaskInput"
+placeholder="Enter task">
 
-<button onclick="addTask()">
-Add Task
-</button>
+<select id="plannerSuggestion">
+
+<option>
+Choose Suggested Task
+</option>
+
+<option>
+DSA Practice
+</option>
+
+<option>
+Frontend Development
+</option>
+
+<option>
+Backend Development
+</option>
+
+<option>
+React Revision
+</option>
+
+<option>
+DBMS Revision
+</option>
+
+<option>
+LeetCode Contest
+</option>
+
+<option>
+AI Model Training
+</option>
+
+<option>
+Machine Learning
+</option>
+
+</select>
+
+<input
+type="number"
+id="plannerHours"
+placeholder="Hours">
+
+<select id="plannerDays">
+
+<option>
+1 Day
+</option>
+
+<option>
+2 Days
+</option>
+
+<option>
+3 Days
+</option>
+
+<option>
+5 Days
+</option>
+
+<option>
+7 Days
+</option>
+
+</select>
+
+<select id="plannerCategory">
+
+<option>
+DSA
+</option>
+
+<option>
+Development
+</option>
+
+<option>
+Revision
+</option>
+
+<option>
+Project
+</option>
+
+</select>
 
 </div>
 
-<ul id="taskList"
-class="task-list">
+<!-- BUTTON -->
+
+<button
+class="add-task-btn">
+
+Add Smart Task 🚀
+
+</button>
+
+<!-- TASK LIST -->
+
+<div class="planner-task-list">
+
+<!-- TASK CARD -->
+
+<div class="planner-task-card">
+
+<div class="planner-task-top">
+
+<div class="planner-task-title">
+AI
+</div>
+
+<div class="planner-badge">
+Project
+</div>
+
+</div>
+
+<div class="planner-details">
+
+⏰ Daily Hours:
+<b>6 hrs</b>
+<br>
+
+📅 Max Time:
+<b>7 Day(s)</b>
+<br>
+
+📚 Study Done:
+<b>420 mins</b>
+<br>
+
+📌 Status:
+✅ <b>Completed</b>
+<br>
+
+📈 Progress:
+<b>100%</b>
+
+</div>
+
+<!-- PROGRESS -->
+
+<div class="planner-progress-bar">
+
+<div
+class="planner-progress"
+style="width:100%">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="side-section">
+
+<!-- SUGGESTIONS -->
+
+<div class="smart-suggestion-box">
+
+<h3>
+💡 Smart Suggestions
+</h3>
+
+<div class="suggestion-card">
+
+<h4>
+📘 DSA Roadmap
+</h4>
+
+<p>
+✔ Arrays & Strings<br>
+✔ Linked List<br>
+✔ Trees & Graphs<br>
+✔ Daily LeetCode Practice
+</p>
+
+</div>
+
+<div class="suggestion-card">
+
+<h4>
+💻 Development Plan
+</h4>
+
+<p>
+✔ HTML + CSS<br>
+✔ JavaScript<br>
+✔ ReactJS<br>
+✔ Backend APIs
+</p>
+
+</div>
+
+<div class="suggestion-card">
+
+<h4>
+📚 Revision Strategy
+</h4>
+
+<p>
+✔ Revise OS Daily<br>
+✔ Revise DBMS<br>
+✔ Revise CN<br>
+✔ Take Short Notes
+</p>
+
+</div>
+
+</div>
+
+<!-- PRODUCTIVITY -->
+
+<div class="productivity-box">
+
+<h3>
+🚀 Productivity Tips
+</h3>
+
+<ul>
+
+<li>
+Complete hardest task first
+</li>
+
+<li>
+Track progress daily
+</li>
+
+<li>
+Stay consistent
+</li>
+
+<li>
+Finish task before deadline
+</li>
+
 </ul>
 
 </div>
 
 </div>
 
-<script>
-
-// ================= LOAD TASKS =================
-
-function loadTasks(){
-
-let tasks =
-JSON.parse(localStorage.getItem("plannerTasks")) || [];
-
-let taskList =
-document.getElementById("taskList");
-
-taskList.innerHTML = "";
-
-let completedCount = 0;
-
-tasks.forEach((task,index)=>{
-
-if(task.completed){
-completedCount++;
-}
-
-taskList.innerHTML += `
-
-<li class="${task.completed ? 'completed' : ''}">
-
-<span>
-${task.text}
-</span>
-
-<div class="task-actions">
-
-<button
-class="complete-btn"
-onclick="completeTask(${index})">
-
-✔
-
-</button>
-
-<button
-class="delete-btn"
-onclick="deleteTask(${index})">
-
-X
-
-</button>
+</div>
 
 </div>
 
-</li>
-
-`;
-
-});
-
-document.getElementById("totalTasks")
-.innerText = tasks.length;
-
-document.getElementById("completedTasks")
-.innerText = completedCount;
-
-}
-
-// ================= ADD TASK =================
-
-function addTask(){
-
-let input =
-document.getElementById("taskInput");
-
-let value =
-input.value.trim();
-
-if(value === ""){
-
-alert("Enter Task");
-return;
-
-}
-
-let tasks =
-JSON.parse(localStorage.getItem("plannerTasks")) || [];
-
-tasks.push({
-
-text:value,
-completed:false
-
-});
-
-localStorage.setItem(
-"plannerTasks",
-JSON.stringify(tasks)
-);
-
-input.value = "";
-
-loadTasks();
-
-}
-
-// ================= COMPLETE TASK =================
-
-function completeTask(index){
-
-let tasks =
-JSON.parse(localStorage.getItem("plannerTasks")) || [];
-
-tasks[index].completed =
-!tasks[index].completed;
-
-localStorage.setItem(
-"plannerTasks",
-JSON.stringify(tasks)
-);
-
-loadTasks();
-
-}
-
-// ================= DELETE TASK =================
-
-function deleteTask(index){
-
-let tasks =
-JSON.parse(localStorage.getItem("plannerTasks")) || [];
-
-tasks.splice(index,1);
-
-localStorage.setItem(
-"plannerTasks",
-JSON.stringify(tasks)
-);
-
-loadTasks();
-
-}
-
-// ================= INIT =================
-
-loadTasks();
-
-</script>
-
 </body>
+
 </html>
+
