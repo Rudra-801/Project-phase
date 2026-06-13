@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Academics | NEXZO</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css?v=20260613-6">
 </head>
+
 <body>
 
+
 <nav class="navbar">
-<h2>Academics</h2>
-<a href="Home.html">🏠Home</a>
+<link rel="icon" type="image/png" href="favicon.png">
+            <img
+                src="favicon.png"
+                alt="Logo"
+                class="site-logo"
+            >
+
+            
+            <h2 class="logo-text">Academics</h2>
+<div class="nav-right">
+<a href="Home.html" class="nav-home">🏠Home</a>
 </nav>
 
 <div class="container center-box">
@@ -16,20 +35,55 @@
 <h1>Select Learning Content</h1>
 
 <div class="selectors">
-<select id="subject" onchange="loadData()"></select>
+<div class="option-picker" id="subjectPicker">
+<input type="hidden" id="subject" value="" onchange="loadData()">
+<button class="option-picker-trigger" type="button" onclick="toggleOptionPicker('subjectPicker', event)">
+<span>Select Subject</span><span class="option-picker-arrow"></span>
+</button>
+<div class="option-picker-menu">
+<button type="button" onclick="chooseOption('subjectPicker','subject','','Select Subject',event)">Select Subject</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','AI','AI',event)">AI</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Machine Learning','Machine Learning',event)">Machine Learning</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Internet of Things','Internet of Things',event)">Internet of Things</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Maths','Maths',event)">Maths</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Electrical Engineering','Electrical Engineering',event)">Electrical Engineering</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Physics','Physics',event)">Physics</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Chemistry','Chemistry',event)">Chemistry</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Biology','Biology',event)">Biology</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Programming','Programming',event)">Programming</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','DSA','DSA',event)">DSA</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Python','Python',event)">Python</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','OOP','OOP',event)">OOP</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Operating System','Operating System',event)">Operating System</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','DBMS','DBMS',event)">DBMS</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Computer Networks','Computer Networks',event)">Computer Networks</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Cloud Computing','Cloud Computing',event)">Cloud Computing</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Cyber Law','Cyber Law',event)">Cyber Law</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Digital Electronics','Digital Electronics',event)">Digital Electronics</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Discrete Maths','Discrete Maths',event)">Discrete Maths</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','COA','COA',event)">COA</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','Computer Graphics','Computer Graphics',event)">Computer Graphics</button>
+<button type="button" onclick="chooseOption('subjectPicker','subject','DAA','DAA',event)">DAA</button>
+</div>
+</div>
 
-<select id="level" onchange="loadData()">
-<option value="beginner">Beginner</option>
-<option value="intermediate">Intermediate</option>
-<option value="advanced">Advanced</option>
-</select>
+<div class="option-picker" id="levelPicker">
+<input type="hidden" id="level" value="beginner" onchange="loadData()">
+<button class="option-picker-trigger" type="button" onclick="toggleOptionPicker('levelPicker', event)">
+<span>Beginner</span><span class="option-picker-arrow"></span>
+</button>
+<div class="option-picker-menu">
+<button class="is-selected" type="button" onclick="chooseOption('levelPicker','level','beginner','Beginner',event)">Beginner</button>
+<button type="button" onclick="chooseOption('levelPicker','level','intermediate','Intermediate',event)">Intermediate</button>
+<button type="button" onclick="chooseOption('levelPicker','level','advanced','Advanced',event)">Advanced</button>
+</div>
+</div>
 </div>
 
 <div id="content"></div>
 
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20260613-6"></script>
 </body>
 </html>
-
