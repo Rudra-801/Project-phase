@@ -1,243 +1,65 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Personalized Recommendation System</title>
+<title>Student Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
-
-<style>
-
-body{
-margin:0;
-font-family:Segoe UI;
-background:linear-gradient(135deg,#041250,#870e02);
-color:white;
-min-height:100vh;
-}
-
-/* NAVBAR */
-
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-background:#06011f;
-box-shadow:0 5px 20px rgba(0,0,0,0.4);
-}
-
-.navbar h2{
-color:#11e8ff;
-}
-
-/* MAIN */
-
-.dashboard-container{
-padding:40px;
-}
-
-.dashboard-title{
-text-align:center;
-font-size:48px;
-margin-bottom:40px;
-color:#00e5ff;
-}
-
-/* STATS */
-
-.stats{
-display:flex;
-gap:25px;
-flex-wrap:wrap;
-justify-content:center;
-margin-bottom:40px;
-}
-
-.stat-box{
-background:rgba(255,255,255,0.08);
-padding:30px;
-border-radius:20px;
-min-width:250px;
-text-align:center;
-backdrop-filter:blur(10px);
-box-shadow:0 8px 25px rgba(0,0,0,0.3);
-transition:0.3s;
-}
-
-.stat-box:hover{
-transform:translateY(-8px);
-}
-
-.stat-box h3{
-font-size:38px;
-color:#11e8ff;
-margin:0;
-}
-
-.stat-box p{
-font-size:20px;
-margin-top:10px;
-}
-
-/* GRID */
-
-.dashboard-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-gap:30px;
-}
-
-/* CARD */
-
-.dashboard-card{
-background:rgba(255,255,255,0.08);
-padding:30px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-box-shadow:0 8px 25px rgba(0,0,0,0.3);
-transition:0.3s;
-}
-
-.dashboard-card:hover{
-transform:translateY(-8px);
-}
-
-.dashboard-card h2{
-color:#00e5ff;
-margin-bottom:20px;
-}
-
-/* INPUTS */
-
-.dashboard-card input{
-width:92%;
-padding:15px;
-border:none;
-border-radius:12px;
-margin-bottom:15px;
-font-size:16px;
-outline:none;
-}
-
-.dashboard-card button{
-padding:12px 25px;
-border:none;
-border-radius:12px;
-background:#ff7a18;
-color:white;
-font-size:16px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.dashboard-card button:hover{
-background:#ff5500;
-transform:scale(1.05);
-}
-
-/* LIST */
-
-.dashboard-list{
-padding:0;
-margin-top:20px;
-}
-
-.dashboard-list li{
-list-style:none;
-background:rgba(255,255,255,0.08);
-padding:15px;
-margin-bottom:12px;
-border-radius:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:17px;
-transition:0.3s;
-}
-
-.dashboard-list li:hover{
-background:#ff7a18;
-transform:translateX(5px);
-}
-
-/* DELETE */
-
-.delete-btn{
-background:red;
-padding:6px 12px;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-}
-
-/* LINKS */
-
-.rec-link{
-color:white;
-text-decoration:none;
-width:100%;
-display:block;
-}
-
-.rec-link:hover{
-color:white;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.dashboard-title{
-font-size:34px;
-}
-
-.navbar{
-padding:20px;
-}
-
-}
-
-</style>
+<link rel="icon" type="image/png" href="favicon.png">
 
 </head>
-
 <body>
-
-<!-- NAVBAR -->
 
 <nav class="navbar">
 
-<h2>
-Personalized Recommendation System 🎓
+<h2 class="logo-title">
+🎓 Dashboard
 </h2>
 
-<div>
+<div class="nav-right">
 
-<a href="home.html"
-style="
-color:white;
-text-decoration:none;
-margin-right:20px;
-font-size:18px;
-">
-Home
+<a href="home.html" class="nav-home">
+🏠 Home
 </a>
 
-<button onclick="logout()">
-Logout
+<div class="user-menu">
+
+<button class="user-btn" onclick="toggleMenu()">
+
+<div class="user-icon">
+👤
+</div>
+
+Hi, User ⌄
+
+</button>
+
+<div class="dropdown" id="dropdownMenu">
+
+<a href="#" onclick="openProfile()">
+👤 My Profile
+</a>
+
+<a href="#" onclick="openSettings()">
+⚙️ Settings
+</a>
+
+<button
+class="logout-btn"
+onclick="logout()">
+
+↪ Logout
+
 </button>
 
 </div>
 
-</nav>
+</div>
 
-<!-- MAIN -->
+</div>
+
+</nav>
 
 <div class="dashboard-container">
 
@@ -245,59 +67,30 @@ Logout
 📊 Student Dashboard
 </h1>
 
-<!-- STATS -->
-
 <div class="stats">
 
 <div class="stat-box">
-
-<h3 id="taskCount">
-0
-</h3>
-
-<p>
-Total Tasks
-</p>
-
+<h3 id="taskCount">0</h3>
+<p>Total Tasks</p>
 </div>
 
 <div class="stat-box">
-
-<h3 id="postCount">
-0
-</h3>
-
-<p>
-Community Posts
-</p>
-
+<h3 id="postCount">0</h3>
+<p>Community Posts</p>
 </div>
 
 <div class="stat-box">
-
-<h3 id="recommendField">
-AI/ML
-</h3>
-
-<p>
-Recommended Field
-</p>
-
+<h3 id="recommendField">AI/ML</h3>
+<p>Recommended Field</p>
 </div>
 
 </div>
-
-<!-- GRID -->
 
 <div class="dashboard-grid">
 
-<!-- TASKS -->
-
 <div class="dashboard-card">
 
-<h2>
-📅 Tasks Planner
-</h2>
+<h2>📅 Tasks Planner</h2>
 
 <input
 type="text"
@@ -315,13 +108,9 @@ class="dashboard-list">
 
 </div>
 
-<!-- POSTS -->
-
 <div class="dashboard-card">
 
-<h2>
-💬 Community Posts
-</h2>
+<h2>💬 Community Posts</h2>
 
 <input
 type="text"
@@ -339,63 +128,39 @@ class="dashboard-list">
 
 </div>
 
-<!-- RECOMMEND -->
-
 <div class="dashboard-card">
 
-<h2>
-🎯 Recommendations
-</h2>
+<h2>🎯 Recommendations</h2>
 
 <ul class="dashboard-list">
 
 <li>
-<a
-href="academics.html"
-class="rec-link">
-
+<a href="academics.html" class="rec-link">
 📘 Learn DSA & Problem Solving
-
 </a>
 </li>
 
 <li>
-<a
-href="academics.html"
-class="rec-link">
-
+<a href="academics.html" class="rec-link">
 🤖 Explore Machine Learning
-
 </a>
 </li>
 
 <li>
-<a
-href="career.html"
-class="rec-link">
-
+<a href="career.html" class="rec-link">
 🌐 Full Stack Development
-
 </a>
 </li>
 
 <li>
-<a
-href="career.html"
-class="rec-link">
-
+<a href="career.html" class="rec-link">
 ☁️ Cloud Computing
-
 </a>
 </li>
 
 <li>
-<a
-href="career.html"
-class="rec-link">
-
+<a href="career.html" class="rec-link">
 🔐 Cyber Security
-
 </a>
 </li>
 
@@ -407,309 +172,88 @@ class="rec-link">
 
 </div>
 
-<script>
+<!-- PROFILE MODAL -->
 
-// ================= LOGOUT =================
+<div id="profileModal" class="modal hidden">
 
-function logout(){
+<div class="modal-box">
 
-localStorage.clear();
+<h2>👤 My Profile</h2>
 
-window.location.href =
-"home.html";
+<p>
+<b>Name:</b>
+<span id="profileName">
+User
+</span>
+</p>
 
-}
+<p>
+<b>Email:</b>
+<span id="profileEmail">
+user@email.com
+</span>
+</p>
 
-// ================= TASKS =================
+<p>
+<b>Total Tasks:</b>
+<span id="profileTasks">
+0
+</span>
+</p>
 
-function loadTasks(){
+<p>
+<b>Total Posts:</b>
+<span id="profilePosts">
+0
+</span>
+</p>
 
-let tasks =
-JSON.parse(localStorage.getItem("tasks")) || [];
+<input
+type="text"
+id="newName"
+placeholder="Change Username">
 
-let taskList =
-document.getElementById("taskList");
-
-taskList.innerHTML = "";
-
-tasks.forEach((task,index)=>{
-
-taskList.innerHTML += `
-
-<li>
-
-${task}
-
-<button
-class="delete-btn"
-onclick="deleteTask(${index})">
-
-X
-
+<button onclick="changeUsername()">
+Save Name
 </button>
 
-</li>
-
-`;
-
-});
-
-document.getElementById("taskCount")
-.innerText = tasks.length;
-
-}
-
-function addTask(){
-
-let input =
-document.getElementById("taskInput");
-
-let value =
-input.value.trim();
-
-if(value === ""){
-
-alert("Enter Task");
-return;
-
-}
-
-let tasks =
-JSON.parse(localStorage.getItem("tasks")) || [];
-
-tasks.push(value);
-
-localStorage.setItem(
-"tasks",
-JSON.stringify(tasks)
-);
-
-input.value = "";
-
-loadTasks();
-
-updateRecommendation();
-
-}
-
-function deleteTask(index){
-
-let tasks =
-JSON.parse(localStorage.getItem("tasks")) || [];
-
-tasks.splice(index,1);
-
-localStorage.setItem(
-"tasks",
-JSON.stringify(tasks)
-);
-
-loadTasks();
-
-updateRecommendation();
-
-}
-
-// ================= POSTS =================
-
-function loadPosts(){
-
-let posts =
-JSON.parse(localStorage.getItem("posts")) || [];
-
-let postList =
-document.getElementById("postList");
-
-postList.innerHTML = "";
-
-posts.forEach((post,index)=>{
-
-postList.innerHTML += `
-
-<li>
-
-${post}
-
-<button
-class="delete-btn"
-onclick="deletePost(${index})">
-
-X
-
+<button onclick="closeProfile()">
+Close
 </button>
 
-</li>
+</div>
 
-`;
+</div>
 
-});
+<!-- SETTINGS MODAL -->
 
-document.getElementById("postCount")
-.innerText = posts.length;
+<div id="settingsModal" class="modal hidden">
 
-}
+<div class="modal-box">
 
-function addPost(){
+<h2>⚙️ Settings</h2>
 
-let input =
-document.getElementById("postInput");
+<button onclick="toggleTheme()">
+🌙 Dark / Light Mode
+</button>
 
-let value =
-input.value.trim();
+<button onclick="resetAllData()">
+🗑 Reset Tasks & Posts
+</button>
 
-if(value === ""){
+<button onclick="logout()">
+🚪 Logout
+</button>
 
-alert("Write Something");
-return;
+<button onclick="closeSettings()">
+Close
+</button>
 
-}
+</div>
 
-let posts =
-JSON.parse(localStorage.getItem("posts")) || [];
+</div>
 
-posts.push(value);
-
-localStorage.setItem(
-"posts",
-JSON.stringify(posts)
-);
-
-input.value = "";
-
-loadPosts();
-
-updateRecommendation();
-
-}
-
-function deletePost(index){
-
-let posts =
-JSON.parse(localStorage.getItem("posts")) || [];
-
-posts.splice(index,1);
-
-localStorage.setItem(
-"posts",
-JSON.stringify(posts)
-);
-
-loadPosts();
-
-updateRecommendation();
-
-}
-
-// ================= SMART RECOMMEND =================
-
-function updateRecommendation(){
-
-let tasks =
-JSON.parse(localStorage.getItem("tasks")) || [];
-
-let posts =
-JSON.parse(localStorage.getItem("posts")) || [];
-
-let allText =
-(tasks.join(" ") + " " + posts.join(" "))
-.toLowerCase();
-
-let field =
-"Software Development 💻";
-
-// AI
-
-if(
-allText.includes("ai") ||
-allText.includes("machine learning") ||
-allText.includes("deep learning") ||
-allText.includes("python")
-){
-
-field =
-"AI / Machine Learning 🤖";
-
-}
-
-// WEB
-
-else if(
-allText.includes("web") ||
-allText.includes("html") ||
-allText.includes("css") ||
-allText.includes("javascript") ||
-allText.includes("react")
-){
-
-field =
-"Full Stack Development 🌐";
-
-}
-
-// CYBER
-
-else if(
-allText.includes("cyber") ||
-allText.includes("security") ||
-allText.includes("hacking")
-){
-
-field =
-"Cyber Security 🔐";
-
-}
-
-// CLOUD
-
-else if(
-allText.includes("cloud") ||
-allText.includes("aws") ||
-allText.includes("devops")
-){
-
-field =
-"Cloud Computing ☁️";
-
-}
-
-// DATA SCIENCE
-
-else if(
-allText.includes("data") ||
-allText.includes("analytics")
-){
-
-field =
-"Data Science 📊";
-
-}
-
-// DSA
-
-else if(
-allText.includes("dsa") ||
-allText.includes("leetcode")
-){
-
-field =
-"DSA & Problem Solving 📘";
-
-}
-
-document.getElementById("recommendField")
-.innerText = field;
-
-}
-
-// ================= INIT =================
-
-loadTasks();
-
-loadPosts();
-
-updateRecommendation();
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
