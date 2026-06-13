@@ -3,425 +3,183 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Login | Personalized Recommendation System</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="style.css">
+    <title>
+        Login | Personalized Recommendation System
+    </title>
 
-<style>
+    <link
+        rel="icon"
+        type="image/png"
+        href="favicon.png"
+    >
 
-/* BODY */
-
-body{
-margin:0;
-font-family:Segoe UI;
-background:linear-gradient(135deg,#041250,#870e02);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-}
-
-/* LOGIN BOX */
-
-.login-container{
-width:400px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
-padding:45px;
-border-radius:25px;
-box-shadow:0 10px 40px rgba(0,0,0,0.5);
-text-align:center;
-animation:fadeIn 0.6s ease;
-}
-
-/* TITLE */
-
-.login-container h1{
-margin-bottom:10px;
-color:#11e8ff;
-font-size:38px;
-}
-
-.login-container p{
-color:#d7f9ff;
-margin-bottom:35px;
-font-size:16px;
-}
-
-/* INPUTS */
-
-.input-box{
-margin-bottom:20px;
-}
-
-.input-box input{
-width:100%;
-padding:16px;
-border:none;
-outline:none;
-border-radius:12px;
-font-size:16px;
-background:rgba(255,255,255,0.12);
-color:white;
-box-sizing:border-box;
-}
-
-.input-box input::placeholder{
-color:#d0d0d0;
-}
-
-/* BUTTONS */
-
-.login-btn{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-background:#ff7a18;
-color:white;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-margin-top:10px;
-}
-
-.login-btn:hover{
-transform:scale(1.03);
-background:#ff5e00;
-}
-
-.skip-btn{
-width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
-background:#0b2f67;
-color:white;
-font-size:16px;
-cursor:pointer;
-margin-top:15px;
-transition:0.3s;
-}
-
-.skip-btn:hover{
-background:#11418d;
-}
-
-/* CREATE ACCOUNT */
-
-.create-account{
-margin-top:20px;
-color:#d7f9ff;
-font-size:15px;
-}
-
-.create-account span{
-color:#11e8ff;
-cursor:pointer;
-font-weight:bold;
-}
-
-.create-account span:hover{
-text-decoration:underline;
-}
-
-/* USER */
-
-.saved-user{
-background:rgba(255,255,255,0.08);
-padding:15px;
-border-radius:12px;
-margin-bottom:25px;
-color:#11e8ff;
-font-size:16px;
-}
-
-/* ANIMATION */
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-/* MOBILE */
-
-@media(max-width:500px){
-
-.login-container{
-width:90%;
-padding:30px;
-}
-
-.login-container h1{
-font-size:30px;
-}
-
-}
-
-</style>
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
-<body>
+<body class="login-body">
 
-<div class="login-container">
+    <div class="login-container">
 
-<h1>
-🎓 Welcome Back
-</h1>
+        <!-- LOGO -->
 
-<p>
-Login to continue to Personalized Recommendation System
-</p>
+        <div class="login-logo">
 
-<div id="savedUserBox"></div>
+            <img
+                src="favicon.png"
+                alt="Logo"
+            >
 
-<div class="input-box">
-<input
-type="email"
-id="email"
-placeholder="Enter your email">
-</div>
+        </div>
 
-<div class="input-box">
-<input
-type="password"
-id="password"
-placeholder="Enter password">
-</div>
+        <h1>
+            Sign In
+        </h1>
 
-<button
-class="login-btn"
-onclick="loginUser()">
+        <!-- EMAIL -->
 
-Login
+        <div class="label">
+            Email Address
+        </div>
 
-</button>
+        <div class="login-input-box">
 
-<button
-class="skip-btn"
-onclick="skipLogin()">
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+            >
 
-Continue as Guest
+        </div>
 
-</button>
+        <!-- PASSWORD -->
 
-<!-- CREATE ACCOUNT -->
+        <div class="label">
+            Password
+        </div>
 
-<div class="create-account">
+        <div class="login-input-box password-box">
 
-Don't have an account?
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+            >
 
-<span onclick="createAccount()">
-Create Account
-</span>
+            <button
+                type="button"
+                class="password-toggle"
+                onclick="togglePassword('password', this)"
+            >
+                Show
+            </button>
 
-</div>
+        </div>
 
-</div>
+        <!-- FORGOT PASSWORD -->
 
-<script>
+        <div class="forget-password">
 
-// ================= LOGIN =================
+            <a
+                href="#"
+                onclick="forgotPassword()"
+            >
+                Forgot Password?
+            </a>
 
-function loginUser(){
+        </div>
 
-let email =
-document.getElementById("email").value;
+        <!-- LOGIN BUTTON -->
 
-let password =
-document.getElementById("password").value;
+        <button
+            class="login-btn"
+            onclick="loginUser()"
+        >
+            Sign In
+        </button>
 
-if(email.trim() === ""){
+        <!-- DIVIDER -->
 
-alert("Enter email");
-return;
+        <div class="divider">
+            OR
+        </div>
 
-}
+        <!-- GOOGLE LOGIN -->
 
-if(!email.includes("@")){
+        <div class="social-login">
 
-alert("Enter valid email");
-return;
+            <button
+                class="social-btn"
+                onclick="googleLogin()"
+            >
 
-}
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
+                    alt="Google"
+                >
 
-if(password.trim() === ""){
+                Continue With Google
 
-alert("Enter password");
-return;
+            </button>
 
-}
+            <!-- GITHUB LOGIN -->
 
-// SAVE LOGIN
+            <button
+                class="social-btn"
+                onclick="githubLogin()"
+            >
 
-localStorage.setItem(
-"email",
-email
-);
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                    alt="GitHub"
+                >
 
-localStorage.setItem(
-"loggedIn",
-"true"
-);
+                Continue With GitHub
 
-// REDIRECT
+            </button>
 
-let redirect =
-localStorage.getItem("redirectPage");
+        </div>
 
-if(redirect){
+        <!-- GUEST -->
 
-window.location.href =
-redirect;
+        <button
+            class="skip-btn"
+            onclick="guestLogin()"
+        >
+            Continue as Guest
+        </button>
 
-}
-else{
+        <!-- SIGNUP -->
 
-window.location.href =
-"home.html";
+        <div class="bottom-link">
 
-}
+            New User?
 
-}
+            <span
+                onclick="goSignup()"
+            >
+                Create Account
+            </span>
 
-// ================= CREATE ACCOUNT =================
+        </div>
 
-function createAccount(){
+    </div>
 
-let email =
-document.getElementById("email").value;
+    <!-- SCRIPT -->
 
-let password =
-document.getElementById("password").value;
+    <script src="script.js"></script>
 
-if(email.trim() === ""){
-
-alert("Enter email");
-return;
-
-}
-
-if(!email.includes("@")){
-
-alert("Enter valid email");
-return;
-
-}
-
-if(password.trim().length < 4){
-
-alert("Password must be at least 4 characters");
-return;
-
-}
-
-// SAVE ACCOUNT
-
-localStorage.setItem(
-"userEmail",
-email
-);
-
-localStorage.setItem(
-"userPassword",
-password
-);
-
-alert("Account Created Successfully ✅");
-
-}
-
-// ================= GUEST =================
-
-function skipLogin(){
-
-localStorage.setItem(
-"loggedIn",
-"false"
-);
-
-window.location.href =
-"home.html";
-
-}
-
-// ================= AUTO USER =================
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-let savedEmail =
-localStorage.getItem("email");
-
-let loggedIn =
-localStorage.getItem("loggedIn");
-
-if(savedEmail && loggedIn === "true"){
-
-let username =
-savedEmail.split("@")[0];
-
-username =
-username.charAt(0).toUpperCase() +
-username.slice(1);
-
-document.getElementById("savedUserBox")
-.innerHTML = `
-
-<div class="saved-user">
-
-Continue as <b>${username}</b>
-
-<br><br>
-
-<button
-onclick="continueUser()"
-style="
-padding:10px 25px;
-border:none;
-border-radius:10px;
-background:#11e8ff;
-color:black;
-font-weight:bold;
-cursor:pointer;
-">
-
-Continue
-
-</button>
-
-</div>
-
-`;
-
-}
-
-});
-
-// ================= CONTINUE USER =================
-
-function continueUser(){
-
-window.location.href =
-"home.html";
-
-}
-
-</script>
-
+    
 </body>
+
 </html>
