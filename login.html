@@ -22,12 +22,22 @@
 
     <link
         rel="stylesheet"
-        href="style.css"
+        href="style.css?v=20260613-8"
     >
 
 </head>
 
 <body class="login-body">
+
+    <header class="login-brand-strip">
+        <div class="login-brand-inner">
+            <img src="favicon.png" alt="NEXZO">
+            <div>
+                <strong>NEXZO</strong>
+                <span>Personalized Recommendations for University Students</span>
+            </div>
+        </div>
+    </header>
 
     <div class="login-container">
 
@@ -86,68 +96,50 @@
 
         </div>
 
-        <!-- FORGOT PASSWORD -->
-
         <div class="forget-password">
-
-            <a
-                href="#"
-                onclick="forgotPassword()"
-            >
-                Forgot Password?
-            </a>
-
+            <a href="#" onclick="forgotPassword(event)">Forgot Password?</a>
         </div>
 
         <!-- LOGIN BUTTON -->
 
         <button
+            id="signInButton"
             class="login-btn"
             onclick="loginUser()"
         >
             Sign In
         </button>
 
-        <!-- DIVIDER -->
+        <p id="authMessage" class="auth-message" role="status"></p>
 
-        <div class="divider">
-            OR
-        </div>
-
-        <!-- GOOGLE LOGIN -->
+        <div class="divider">OR</div>
 
         <div class="social-login">
-
             <button
+                type="button"
                 class="social-btn"
+                data-provider="google"
                 onclick="googleLogin()"
             >
-
                 <img
-                    src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
-                    alt="Google"
+                    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                    alt=""
                 >
-
-                Continue With Google
-
+                <span>Continue with Google</span>
             </button>
-
-            <!-- GITHUB LOGIN -->
 
             <button
+                type="button"
                 class="social-btn"
+                data-provider="github"
                 onclick="githubLogin()"
             >
-
                 <img
-                    src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                    alt="GitHub"
+                    src="https://github.githubassets.com/favicons/favicon.svg"
+                    alt=""
                 >
-
-                Continue With GitHub
-
+                <span>Continue with GitHub</span>
             </button>
-
         </div>
 
         <!-- GUEST -->
@@ -177,7 +169,7 @@
 
     <!-- SCRIPT -->
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260613-8"></script>
 
     
 </body>
