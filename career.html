@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" href="style.css">
 
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
@@ -24,14 +25,14 @@ Career Guidance 🎯
 
 <div>
 
-<a href="home.html"
+<a href="Home.html"
 style="
 color:white;
 text-decoration:none;
 font-size:18px;
 font-weight:bold;
 ">
-Home
+🏠Home
 </a>
 
 </div>
@@ -61,40 +62,12 @@ Select Branch
 Computer Science (CSE)
 </option>
 
-<option value="it">
-Information Technology (IT)
-</option>
-
-<option value="ece">
-Electronics & Communication (ECE)
-</option>
-
-<option value="ee">
-Electrical Engineering (EE)
-</option>
-
 <option value="me">
-Mechanical Engineering
-</option>
-
-<option value="civil">
-Civil Engineering
+Mechanical Engineering (ME)
 </option>
 
 <option value="ai">
-Artificial Intelligence
-</option>
-
-<option value="ds">
-Data Science
-</option>
-
-<option value="cyber">
-Cyber Security
-</option>
-
-<option value="robotics">
-Robotics
+Artificial Intelligence (AI)
 </option>
 
 </select>
@@ -115,8 +88,283 @@ class="career-detail hidden">
 
 </div>
 
-<script src="script.js"></script>
+<script>
+
+// ================= LOAD CAREERS =================
+
+function loadCareer(){
+
+let branch =
+document.getElementById("branch").value;
+
+let box =
+document.getElementById("careerBox");
+
+// ================= CAREERS =================
+
+let careers = {
+
+// ================= CSE =================
+
+cse:[
+
+{
+title:"Software Engineer",
+skills:"DSA, OOP, DBMS",
+salary:"6 - 20 LPA"
+},
+
+{
+title:"Frontend Developer",
+skills:"HTML, CSS, JavaScript, React",
+salary:"5 - 15 LPA"
+},
+
+{
+title:"Backend Developer",
+skills:"Node.js, MongoDB, APIs",
+salary:"6 - 18 LPA"
+},
+
+{
+title:"Cyber Security Engineer",
+skills:"Networking, Linux, Security",
+salary:"8 - 22 LPA"
+},
+
+{
+title:"Cloud Engineer",
+skills:"AWS, Azure, DevOps",
+salary:"10 - 25 LPA"
+}
+
+],
+
+// ================= ME =================
+
+me:[
+
+{
+title:"Automobile Engineer",
+skills:"CAD, Design, Engines",
+salary:"5 - 12 LPA"
+},
+
+{
+title:"Robotics Engineer",
+skills:"Automation, Sensors",
+salary:"8 - 18 LPA"
+},
+
+{
+title:"Production Engineer",
+skills:"Manufacturing, Production",
+salary:"4 - 10 LPA"
+},
+
+{
+title:"Design Engineer",
+skills:"AutoCAD, SolidWorks",
+salary:"5 - 14 LPA"
+}
+
+],
+
+// ================= AI =================
+
+ai:[
+
+{
+title:"AI Engineer",
+skills:"Python, ML, Deep Learning",
+salary:"10 - 30 LPA"
+},
+
+{
+title:"Machine Learning Engineer",
+skills:"TensorFlow, Neural Networks",
+salary:"12 - 35 LPA"
+},
+
+{
+title:"NLP Engineer",
+skills:"LLM, NLP, Transformers",
+salary:"15 - 40 LPA"
+},
+
+{
+title:"Computer Vision Engineer",
+skills:"OpenCV, CNN",
+salary:"12 - 32 LPA"
+},
+
+{
+title:"AI Researcher",
+skills:"Research Papers, Models",
+salary:"20 - 50 LPA"
+}
+
+]
+
+};
+
+// ================= SHOW CARDS =================
+
+if(branch){
+
+box.innerHTML = careers[branch]
+
+.map(c => `
+
+<div class="big-card"
+onclick='showCareer(
+"${c.title}",
+"${c.skills}",
+"${c.salary}"
+)'>
+
+<h2>
+${c.title}
+</h2>
+
+<p>
+${c.skills}
+</p>
+
+<p style="
+margin-top:15px;
+color:#11e8ff;
+font-weight:bold;
+">
+💰 ${c.salary}
+</p>
+
+</div>
+
+`).join("");
+
+}
+
+}
+
+// ================= SHOW DETAILS =================
+
+function showCareer(
+title,
+skills,
+salary
+){
+
+let box =
+document.getElementById("careerDetail");
+
+box.classList.remove("hidden");
+
+box.innerHTML = `
+
+<h2>
+${title}
+</h2>
+
+<p>
+<b>💡 Skills Required:</b>
+<br><br>
+${skills}
+</p>
+
+<p>
+<b>💰 Average Salary:</b>
+<br><br>
+${salary}
+</p>
+
+<br>
+
+<div style="
+display:flex;
+flex-direction:column;
+gap:15px;
+">
+
+<a href="https://roadmap.sh/"
+target="_blank"
+class="career-btn">
+
+🚀 Career Roadmap
+
+</a>
+
+<a href="https://www.youtube.com/results?search_query=${title}+course"
+target="_blank"
+class="career-btn">
+
+🎥 YouTube Course
+
+</a>
+
+<a href="https://www.google.com/search?q=${title}+interview+questions"
+target="_blank"
+class="career-btn">
+
+📝 Interview Questions
+
+</a>
+
+<a href="https://www.linkedin.com/jobs/"
+target="_blank"
+class="career-btn">
+
+💼 Jobs & Internships
+
+</a>
+
+<a href="https://www.google.com/search?q=${title}+resume+pdf"
+target="_blank"
+class="career-btn">
+
+📄 Resume Examples
+
+</a>
+
+</div>
+
+<br>
+
+<button
+onclick="closeCareer()"
+style="
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#11e8ff;
+color:black;
+font-weight:bold;
+cursor:pointer;
+width:100%;
+">
+
+Close
+
+</button>
+
+`;
+
+}
+
+// ================= CLOSE =================
+
+function closeCareer(){
+
+document
+.getElementById("careerDetail")
+.classList.add("hidden");
+
+}
+
+</script>
 
 </body>
-
 </html>
+
+
+
