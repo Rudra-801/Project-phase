@@ -1,89 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <title>Academics | NEXZO</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=20260613-6">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academics | NEXZO</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="academics-body">
 
+<nav class="navbar academics-navbar">
+  <img src="favicon.png" alt="Logo" class="site-logo">
+  <h2 class="logo-text">Academics</h2>
 
-<nav class="navbar">
-<link rel="icon" type="image/png" href="favicon.png">
-            <img
-                src="favicon.png"
-                alt="Logo"
-                class="site-logo"
-            >
-
-            
-            <h2 class="logo-text">Academics</h2>
-<div class="nav-right">
-<a href="Home.html" class="nav-home">🏠Home</a>
+  <div class="nav-right">
+    <a href="Home.html" class="nav-home">🏠 Home</a>
+  </div>
 </nav>
 
-<div class="container center-box">
+<main class="academics-page">
 
-<h1>Select Learning Content</h1>
+<section class="academics-hero">
+  <p>EXPLORE LEARNING PATHWAYS</p>
+  <h1>Select Learning Content</h1>
+  <span>Choose Subject and Difficulty Level</span>
+</section>
 
-<div class="selectors">
-<div class="option-picker" id="subjectPicker">
-<input type="hidden" id="subject" value="" onchange="loadData()">
-<button class="option-picker-trigger" type="button" onclick="toggleOptionPicker('subjectPicker', event)">
-<span>Select Subject</span><span class="option-picker-arrow"></span>
-</button>
-<div class="option-picker-menu">
-<button type="button" onclick="chooseOption('subjectPicker','subject','','Select Subject',event)">Select Subject</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','AI','AI',event)">AI</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Machine Learning','Machine Learning',event)">Machine Learning</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Internet of Things','Internet of Things',event)">Internet of Things</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Maths','Maths',event)">Maths</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Electrical Engineering','Electrical Engineering',event)">Electrical Engineering</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Physics','Physics',event)">Physics</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Chemistry','Chemistry',event)">Chemistry</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Biology','Biology',event)">Biology</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Programming','Programming',event)">Programming</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','DSA','DSA',event)">DSA</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Python','Python',event)">Python</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','OOP','OOP',event)">OOP</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Operating System','Operating System',event)">Operating System</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','DBMS','DBMS',event)">DBMS</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Computer Networks','Computer Networks',event)">Computer Networks</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Cloud Computing','Cloud Computing',event)">Cloud Computing</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Cyber Law','Cyber Law',event)">Cyber Law</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Digital Electronics','Digital Electronics',event)">Digital Electronics</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Discrete Maths','Discrete Maths',event)">Discrete Maths</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','COA','COA',event)">COA</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','Computer Graphics','Computer Graphics',event)">Computer Graphics</button>
-<button type="button" onclick="chooseOption('subjectPicker','subject','DAA','DAA',event)">DAA</button>
-</div>
+<section class="academic-pickers">
+
+  <div class="custom-select" id="subjectPicker">
+    <button type="button" class="custom-select-trigger" onclick="togglePicker(event,'subjectPicker')">
+      <span id="subjectText">Select Subject</span>
+      <b>⌄</b>
+    </button>
+
+    <div class="custom-menu">
+      <p>Select Subject</p>
+
+      <button type="button" onclick="setSubject(event,'AI')">AI</button>
+      <button type="button" onclick="setSubject(event,'Machine Learning')">Machine Learning</button>
+      <button type="button" onclick="setSubject(event,'Internet of Things')">Internet of Things</button>
+      <button type="button" onclick="setSubject(event,'Maths')">Maths</button>
+      <button type="button" onclick="setSubject(event,'Electrical Engineering')">Electrical Engineering</button>
+      <button type="button" onclick="setSubject(event,'Physics')">Physics</button>
+      <button type="button" onclick="setSubject(event,'Chemistry')">Chemistry</button>
+      <button type="button" onclick="setSubject(event,'Biology')">Biology</button>
+      <button type="button" onclick="setSubject(event,'Programming')">Programming</button>
+      <button type="button" onclick="setSubject(event,'DSA')">DSA</button>
+      <button type="button" onclick="setSubject(event,'Python')">Python</button>
+      <button type="button" onclick="setSubject(event,'OOP')">OOP</button>
+      <button type="button" onclick="setSubject(event,'Operating System')">Operating System</button>
+      <button type="button" onclick="setSubject(event,'DBMS')">DBMS</button>
+      <button type="button" onclick="setSubject(event,'Computer Networks')">Computer Networks</button>
+      <button type="button" onclick="setSubject(event,'Cloud Computing')">Cloud Computing</button>
+      <button type="button" onclick="setSubject(event,'Cyber Law')">Cyber Law</button>
+      <button type="button" onclick="setSubject(event,'Digital Electronics')">Digital Electronics</button>
+      <button type="button" onclick="setSubject(event,'Discrete Maths')">Discrete Maths</button>
+      <button type="button" onclick="setSubject(event,'COA')">COA</button>
+      <button type="button" onclick="setSubject(event,'Computer Graphics')">Computer Graphics</button>
+      <button type="button" onclick="setSubject(event,'DAA')">DAA</button>
+    </div>
+  </div>
+
+  <div class="custom-select" id="levelPicker">
+    <button type="button" class="custom-select-trigger" onclick="togglePicker(event,'levelPicker')">
+      <span id="levelText">Select Difficulty Level</span>
+      <b>⌄</b>
+    </button>
+
+    <div class="custom-menu small-menu">
+      <p>Select Difficulty Level</p>
+      <button type="button" onclick="setLevel(event,'Beginner')">Beginner</button>
+      <button type="button" onclick="setLevel(event,'Intermediate')">Intermediate</button>
+      <button type="button" onclick="setLevel(event,'Advanced')">Advanced</button>
+    </div>
+  </div>
+
+</section>
+
+<div class="academic-meta premium-meta">
+  <div class="meta-chip">
+    <span>📚</span>
+    <b>6 Resources</b>
+  </div>
+
+  <div class="meta-chip">
+    <span>🎯</span>
+    <b id="selectedSubjectName">Select Subject</b>
+  </div>
+
+  <div class="meta-chip">
+    <span>⚡</span>
+    <b id="selectedLevelName">Select Difficulty Level</b>
+  </div>
 </div>
 
-<div class="option-picker" id="levelPicker">
-<input type="hidden" id="level" value="beginner" onchange="loadData()">
-<button class="option-picker-trigger" type="button" onclick="toggleOptionPicker('levelPicker', event)">
-<span>Beginner</span><span class="option-picker-arrow"></span>
-</button>
-<div class="option-picker-menu">
-<button class="is-selected" type="button" onclick="chooseOption('levelPicker','level','beginner','Beginner',event)">Beginner</button>
-<button type="button" onclick="chooseOption('levelPicker','level','intermediate','Intermediate',event)">Intermediate</button>
-<button type="button" onclick="chooseOption('levelPicker','level','advanced','Advanced',event)">Advanced</button>
-</div>
-</div>
-</div>
+<div id="academicContent"></div>
 
-<div id="content"></div>
+</main>
 
-</div>
+<script>
+let currentSubject = "";
+let currentLevel = "";
 
-<script src="script.js?v=20260613-6"></script>
+function togglePicker(event, id){
+  event.stopPropagation();
+
+  document.querySelectorAll(".custom-select").forEach(box=>{
+    if(box.id !== id){
+      box.classList.remove("open");
+    }
+  });
+
+  const picker = document.getElementById(id);
+
+  if(picker){
+    picker.classList.toggle("open");
+  }
+}
+
+function setSubject(event, value){
+  event.stopPropagation();
+
+  currentSubject = value;
+
+  document.getElementById("subjectText").innerText = value;
+  document.getElementById("selectedSubjectName").innerText = value;
+
+  document.querySelectorAll("#subjectPicker .custom-menu button").forEach(btn=>{
+    btn.classList.toggle("active", btn.innerText.trim() === value);
+  });
+
+  document.getElementById("subjectPicker").classList.remove("open");
+
+  if(currentSubject !== "" && currentLevel !== ""){
+    renderAcademicContent();
+  }
+}
+
+function setLevel(event, value){
+  event.stopPropagation();
+
+  currentLevel = value;
+
+  document.getElementById("levelText").innerText = value;
+  document.getElementById("selectedLevelName").innerText = value;
+
+  document.querySelectorAll("#levelPicker .custom-menu button").forEach(btn=>{
+    btn.classList.toggle("active", btn.innerText.trim() === value);
+  });
+
+  document.getElementById("levelPicker").classList.remove("open");
+
+  if(currentSubject !== "" && currentLevel !== ""){
+    renderAcademicContent();
+  }
+}
+
+document.addEventListener("click",function(){
+  document.querySelectorAll(".custom-select").forEach(box=>{
+    box.classList.remove("open");
+  });
+});
+
+function renderAcademicContent(){
+  const box = document.getElementById("academicContent");
+
+  if(!box) return;
+
+  if(currentSubject === "" || currentLevel === ""){
+    box.innerHTML = `
+      <div class="empty-academic-state">
+        <h2>Select Subject & Difficulty Level</h2>
+        <p>Please choose both options to view resources.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const q = encodeURIComponent(currentSubject + " " + currentLevel);
+
+  const cards = [
+    ["▶️","Video Lectures","Best YouTube lectures and full courses.",`https://www.youtube.com/results?search_query=${q}+full+course`],
+    ["📄","Notes / PDFs","Important notes, handwritten PDFs and summaries.",`https://www.google.com/search?q=${q}+notes+pdf`],
+    ["🎓","Research Papers","Scholar papers and latest research.",`https://scholar.google.com/scholar?q=${q}`],
+    ["🎯","Practice Questions","MCQs, assignments and previous questions.",`https://www.google.com/search?q=${q}+practice+questions`],
+    ["💻","Projects","Mini projects and source code ideas.",`https://www.google.com/search?q=${q}+project+ideas+github`],
+    ["🗺️","Roadmap","Step-by-step learning path.",`https://www.google.com/search?q=${q}+roadmap`]
+  ];
+
+  box.innerHTML = `
+    <div class="academic-grid">
+      ${cards.map(c=>`
+        <article class="academic-card">
+          <div class="academic-icon">${c[0]}</div>
+          <h3>${c[1]}</h3>
+          <p>${c[2]}</p>
+          <a href="${c[3]}" target="_blank" rel="noopener">Open →</a>
+        </article>
+      `).join("")}
+    </div>
+  `;
+}
+
+window.addEventListener("DOMContentLoaded",function(){
+
+  document.getElementById("subjectText").innerText =
+  "Select Subject";
+
+  document.getElementById("levelText").innerText =
+  "Select Difficulty Level";
+
+  document.getElementById("selectedSubjectName").innerText =
+  "Select Subject";
+
+  document.getElementById("selectedLevelName").innerText =
+  "Select Difficulty Level";
+
+  document.getElementById("academicContent").innerHTML = `
+      <div class="empty-academic-state">
+          <h2>Select Subject & Difficulty Level</h2>
+          <p>Please choose a subject and level to view resources.</p>
+      </div>
+  `;
+});
+</script>
+
 </body>
 </html>
