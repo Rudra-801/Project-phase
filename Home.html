@@ -1,151 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <title>NEXZO</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=20260613-6">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXZO</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css?v=text-space-final">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+<nav class="navbar home-navbar">
+  <div class="logo-section">
+    <img src="favicon.png" alt="Logo" class="site-logo">
 
-    <nav class="navbar home-navbar">
+    <h2 class="logo-text">NEXZO</h2>
 
-        <div class="logo-section">
+    <p class="tagline">
+      Personalized Recommendations for University Students
+    </p>
+  </div>
 
-            <img
-                src="favicon.png"
-                alt="Logo"
-                class="site-logo"
-            >
+  <div id="loginArea">
+    <button id="authBtn" onclick="goLogin()">Login</button>
+  </div>
+</nav>
 
-            
-            <h2 class="logo-text">Nexzo</h2>
-<p class="tagline">
-                Personalized Recommendations for University Students
-            </p>
+<section class="hero">
+  <h1>
+    Welcome To Personalized Recommendation System For University Students
+  </h1>
 
-        </div>
+  <p>
+    Learn smarter with personalized recommendations for academics, careers and productivity.
+  </p>
+</section>
 
-        <!-- LOGIN AREA -->
-        <div id="loginArea">
+<section class="home-proof">
+  <div class="home-proof-item">
+    <strong>22</strong>
+    <span>Curated Subjects</span>
+  </div>
 
-            <button
-                id="authBtn"
-                onclick="goLogin()"
-            >
-                Login
-            </button>
+  <div class="home-proof-item">
+    <strong>14+</strong>
+    <span>Career Paths</span>
+  </div>
 
-        </div>
+  <div class="home-proof-item">
+    <strong>3</strong>
+    <span>Interactive Student Tools</span>
+  </div>
+</section>
 
-    </nav>
+<div class="grid home-feature-grid">
 
-    <!-- ================= HERO ================= -->
+  <div class="card" onclick="openPage('academics.html')">
+    <h2>📚 Academics</h2>
+    <p>Notes, Videos, Research Papers & Learning Roadmaps</p>
+  </div>
 
-    <section class="hero">
+  <div class="card" onclick="openPage('career.html')">
+    <h2>🎯 Career Guidance</h2>
+    <p>Explore Engineering Career Opportunities & Required Skills</p>
+  </div>
 
-        <h1>
-            Welcome To Personalized Recommendation System For University Students 
-        </h1>
+  <div class="card" onclick="openPage('planner.html')">
+    <h2>🕒 Smart Planner</h2>
+    <p>Manage Tasks, Goals & Productivity</p>
+  </div>
 
-        <p>
-            Learn smarter with AI powered recommendations for academics, careers and productivity 🚀
-            
-        </p>
+  <div class="card" onclick="openPage('community.html')">
+    <h2>🌐 Student Community</h2>
+    <p>Share Ideas, Doubts & Connect with Students</p>
+  </div>
 
-    </section>
+  <div class="card" onclick="openPage('dashboard.html')">
+    <h2>📊 Dashboard</h2>
+    <p>Track Your Activity & Overall Performance</p>
+  </div>
 
-    <!-- ================= FEATURES ================= -->
+</div>
 
-    <div class="grid">
+<footer class="footer">
+  © 2026 Personalized Recommendation System. Developed by Team NEXZO. All rights reserved.
+</footer>
 
-        <!-- ACADEMICS -->
-        <div
-            class="card"
-            onclick="openPage('academics.html')"
-        >
-            <h2>📚 Academics</h2>
-
-            <p>
-                Notes, Videos, Research Papers &
-                Learning Roadmaps
-            </p>
-        </div>
-
-        <!-- CAREER -->
-        <div
-            class="card"
-            onclick="openPage('career.html')"
-        >
-            <h2>💼 Career Guidance</h2>
-
-            <p>
-                Explore CSE Career Opportunities
-                & Required Skills
-            </p>
-        </div>
-
-        <!-- SMART PLANNER -->
-        <div
-            class="card"
-            onclick="openPage('planner.html')"
-        >
-            <h2>📅 Smart Planner</h2>
-
-            <p>
-                Manage Tasks, Goals &
-                Productivity
-            </p>
-        </div>
-
-        <!-- COMMUNITY -->
-        <div
-            class="card"
-            onclick="openPage('community.html')"
-        >
-            <h2>🌐 Student Community</h2>
-
-            <p>
-                Share Ideas, Doubts &
-                Connect with Students
-            </p>
-        </div>
-
-        <!-- DASHBOARD -->
-        <div
-            class="card"
-            onclick="openPage('dashboard.html')"
-        >
-            <h2>📊 Dashboard</h2>
-
-            <p>
-                Track Your Activity &
-                Overall Performance
-            </p>
-        </div>
-
-    </div>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="footer">
-
-        © 2026 Personalized Recommendation System. Developed by Team PRS. All rights reserved.
-
-    </footer>
-
-    <!-- ================= SCRIPT ================= -->
-
-    <script src="script.js?v=20260613-6"></script>
-
+<script src="script.js?v=text-space-final"></script>
 </body>
 </html>
