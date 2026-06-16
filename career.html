@@ -4,170 +4,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Career Guidance | NEXZO</title>
-<link rel="stylesheet" href="style.css?v=20260613-6">
+<link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="favicon.png">
 </head>
+
 <body class="career-body">
 
-<nav class="navbar career-navbar">
-<link rel="icon" type="image/png" href="favicon.png">
-            <img
-                src="favicon.png"
-                alt="Logo"
-                class="site-logo"
-            >
-
-            
-            <h2 class="logo-text">Career Guidance</h2>
-<a href="Home.html">🏠Home</a>
+<nav class="career-navbar-final">
+  <img src="favicon.png" class="career-logo" alt="NEXZO">
+  <h2>Career Guidance</h2>
+  <a href="Home.html">🏠 Home</a>
 </nav>
 
-<main class="career-page">
-<header class="career-heading">
-<p class="career-eyebrow">Explore engineering pathways</p>
-<h1>Choose Your Engineering Branch</h1>
-</header>
+<main class="career-page-final">
+  <section class="career-hero-final">
+    <p>CSE Focused Career Paths</p>
+    <h1>Choose Your Career Category</h1>
 
-<section class="career-branch-stage" aria-label="Branch selection">
-<div class="option-picker career-picker" id="branchPicker">
-<input type="hidden" id="branch" value="" onchange="loadCareer()">
-<button class="option-picker-trigger" type="button" onclick="toggleOptionPicker('branchPicker', event)">
-<span>Select Branch</span><span class="option-picker-arrow"></span>
-</button>
-<div class="option-picker-menu">
-<button type="button" onclick="chooseOption('branchPicker','branch','','Select Branch',event)">Select Branch</button>
-<button type="button" onclick="chooseOption('branchPicker','branch','cse','Computer Science (CSE)',event)">Computer Science (CSE)</button>
-<button type="button" onclick="chooseOption('branchPicker','branch','me','Mechanical Engineering (ME)',event)">Mechanical Engineering (ME)</button>
-<button type="button" onclick="chooseOption('branchPicker','branch','ai','Artificial Intelligence (AI)',event)">Artificial Intelligence (AI)</button>
-</div>
-</div>
+    <div class="career-custom-picker" id="careerPicker">
+      <button type="button" class="career-picker-trigger" onclick="toggleCareerPicker(event)">
+        <span id="careerSelectedText">Select Career</span>
+        <span class="career-picker-arrow"></span>
+      </button>
 
-<div class="career-branch-meta" id="careerBranchMeta">
-<span id="careerCount">0 roles</span>
-<span id="careerBranchName">Select a branch to begin</span>
-</div>
-</section>
+      <div class="career-picker-menu">
+        <button type="button" onclick="chooseCareer('', 'Select Career')">Select Career</button>
+        <button type="button" onclick="chooseCareer('cse', 'Computer Science')">Computer Science</button>
+        <button type="button" onclick="chooseCareer('ai', 'Artificial Intelligence')">Artificial Intelligence</button>
+        <button type="button" onclick="chooseCareer('ml', 'Machine Learning')">Machine Learning</button>
+        <button type="button" onclick="chooseCareer('cyber', 'Cyber Security')">Cyber Security</button>
+      </div>
+    </div>
 
-<section id="careerBox" class="career-grid" aria-live="polite">
-<div class="career-empty-state">
-<strong>Your career paths will appear here.</strong>
-<span>Select a branch above to explore roles, skills and salary ranges.</span>
-</div>
-</section>
+    <input type="hidden" id="branch" value="">
+
+    <div class="career-meta-final">
+      <span id="careerCount">0 roles</span>
+      <span>•</span>
+      <span id="careerBranchName">Select Career</span>
+    </div>
+  </section>
+
+  <section id="careerBox" class="career-grid-final">
+    <div class="career-empty-final">
+      <h2>Select Career</h2>
+      <p>Choose category to explore unique career paths.</p>
+    </div>
+  </section>
 </main>
 
-<div id="careerDetail" class="career-dialog hidden" role="dialog" aria-modal="true" aria-labelledby="careerDialogTitle">
-<div class="career-dialog-backdrop" onclick="closeCareer()"></div>
-<div class="career-dialog-panel">
-<button type="button" class="career-dialog-close" onclick="closeCareer()" aria-label="Close">&times;</button>
-<div id="careerDialogContent"></div>
-</div>
+<div id="careerDetail" class="career-dialog-final hidden">
+  <div class="career-backdrop-final" onclick="closeCareer()"></div>
+  <div class="career-modal-final">
+    <button type="button" onclick="closeCareer()" class="career-close-final">×</button>
+    <div id="careerDialogContent"></div>
+  </div>
 </div>
 
 <script>
 const careerData = {
-    cse: {
-        label: "Computer Science",
-        roles: [
-            { title: "Software Engineer", skills: "DSA, OOP, DBMS", salary: "6 - 20 LPA", mark: "SE" },
-            { title: "Frontend Developer", skills: "HTML, CSS, JavaScript, React", salary: "5 - 15 LPA", mark: "FE" },
-            { title: "Backend Developer", skills: "Node.js, MongoDB, APIs", salary: "6 - 18 LPA", mark: "BE" },
-            { title: "Cyber Security Engineer", skills: "Networking, Linux, Security", salary: "8 - 22 LPA", mark: "CS" },
-            { title: "Cloud Engineer", skills: "AWS, Azure, DevOps", salary: "10 - 25 LPA", mark: "CE" }
-        ]
-    },
-    me: {
-        label: "Mechanical Engineering",
-        roles: [
-            { title: "Automobile Engineer", skills: "CAD, Design, Engines", salary: "5 - 12 LPA", mark: "AE" },
-            { title: "Robotics Engineer", skills: "Automation, Sensors", salary: "8 - 18 LPA", mark: "RE" },
-            { title: "Production Engineer", skills: "Manufacturing, Production", salary: "4 - 10 LPA", mark: "PE" },
-            { title: "Design Engineer", skills: "AutoCAD, SolidWorks", salary: "5 - 14 LPA", mark: "DE" }
-        ]
-    },
-    ai: {
-        label: "Artificial Intelligence",
-        roles: [
-            { title: "AI Engineer", skills: "Python, ML, Deep Learning", salary: "10 - 30 LPA", mark: "AI" },
-            { title: "Machine Learning Engineer", skills: "TensorFlow, Neural Networks", salary: "12 - 35 LPA", mark: "ML" },
-            { title: "NLP Engineer", skills: "LLMs, NLP, Transformers", salary: "15 - 40 LPA", mark: "NL" },
-            { title: "Computer Vision Engineer", skills: "OpenCV, CNN", salary: "12 - 32 LPA", mark: "CV" },
-            { title: "AI Researcher", skills: "Research, Models, Experiments", salary: "20 - 50 LPA", mark: "AR" }
-        ]
-    }
+  cse:{
+    label:"Computer Science",
+    roles:[
+      {title:"Software Development Engineer", mark:"SDE", desc:"Build scalable software applications and products.", skills:"DSA, OOP, DBMS, Git", salary:"6 - 22 LPA"},
+      {title:"Frontend Interface Engineer", mark:"FE", desc:"Create responsive and premium web interfaces.", skills:"HTML, CSS, JavaScript, React", salary:"5 - 16 LPA"},
+      {title:"Backend API Engineer", mark:"BE", desc:"Develop APIs, servers and database systems.", skills:"Node.js, SQL, MongoDB, APIs", salary:"6 - 20 LPA"},
+      {title:"Full Stack Product Developer", mark:"FS", desc:"Handle frontend, backend and deployment work.", skills:"React, Node, Firebase, DBMS", salary:"7 - 24 LPA"},
+      {title:"Cloud Infrastructure Engineer", mark:"CL", desc:"Deploy and manage cloud-based applications.", skills:"AWS, Docker, Linux, Networking", salary:"7 - 26 LPA"},
+      {title:"Automation DevOps Engineer", mark:"DO", desc:"Automate deployments and CI/CD pipelines.", skills:"CI/CD, Docker, Kubernetes", salary:"7 - 24 LPA"}
+    ]
+  },
+
+  ai:{
+    label:"Artificial Intelligence",
+    roles:[
+      {title:"Intelligent Systems Engineer", mark:"AI", desc:"Build smart AI-based applications and workflows.", skills:"Python, AI APIs, Deep Learning", salary:"8 - 30 LPA"},
+      {title:"Natural Language AI Engineer", mark:"NLP", desc:"Work on chatbots, LLMs and text AI systems.", skills:"LLMs, NLP, Transformers", salary:"9 - 35 LPA"},
+      {title:"Computer Vision Specialist", mark:"CV", desc:"Create image, video and detection AI systems.", skills:"OpenCV, CNN, PyTorch", salary:"8 - 32 LPA"},
+      {title:"Generative AI Developer", mark:"GAI", desc:"Build products using GPT, RAG and vector search.", skills:"GPT, LangChain, RAG, Vector DB", salary:"12 - 45 LPA"},
+      {title:"AI Product Builder", mark:"AP", desc:"Convert AI ideas into real user-facing products.", skills:"Prompting, APIs, UX, Deployment", salary:"8 - 28 LPA"},
+      {title:"Robotics Intelligence Developer", mark:"RI", desc:"Add AI-based decision making to robots.", skills:"ROS, Sensors, Python, AI", salary:"8 - 30 LPA"}
+    ]
+  },
+
+  ml:{
+    label:"Machine Learning",
+    roles:[
+      {title:"Machine Learning Model Engineer", mark:"ML", desc:"Train, test and deploy machine learning models.", skills:"Python, Scikit-learn, TensorFlow", salary:"7 - 28 LPA"},
+      {title:"Applied Data Scientist", mark:"DS", desc:"Extract insights and build practical ML models.", skills:"Statistics, Python, ML, Visualization", salary:"7 - 25 LPA"},
+      {title:"MLOps Platform Engineer", mark:"MLO", desc:"Maintain production ML systems and pipelines.", skills:"MLflow, Docker, AWS, Kubernetes", salary:"8 - 28 LPA"},
+      {title:"Business Data Analyst", mark:"DA", desc:"Analyze business data and create reports.", skills:"Excel, SQL, Power BI, Python", salary:"4 - 14 LPA"},
+      {title:"Recommendation Engine Developer", mark:"RS", desc:"Create personalized recommendation systems.", skills:"Ranking Models, Python, ML", salary:"8 - 30 LPA"},
+      {title:"Predictive Analytics Specialist", mark:"PA", desc:"Predict trends using historical data.", skills:"Forecasting, Statistics, Python", salary:"7 - 24 LPA"}
+    ]
+  },
+
+  cyber:{
+    label:"Cyber Security",
+    roles:[
+      {title:"Security Operations Analyst", mark:"SOC", desc:"Monitor threats, logs and security alerts.", skills:"SIEM, Logs, Networking", salary:"5 - 16 LPA"},
+      {title:"Ethical Penetration Tester", mark:"PT", desc:"Find vulnerabilities legally and report them.", skills:"Kali Linux, Burp Suite, OWASP", salary:"6 - 24 LPA"},
+      {title:"DevSecOps Security Engineer", mark:"DSO", desc:"Secure cloud, CI/CD and deployment pipelines.", skills:"AWS Security, IAM, Docker", salary:"8 - 30 LPA"},
+      {title:"Application Security Tester", mark:"AST", desc:"Secure web, mobile and API applications.", skills:"OWASP, APIs, Secure Coding", salary:"7 - 26 LPA"},
+      {title:"Digital Forensics Investigator", mark:"DF", desc:"Investigate cyber incidents and evidence.", skills:"Forensics, OSINT, Incident Response", salary:"7 - 24 LPA"},
+      {title:"Malware Reverse Analyst", mark:"MA", desc:"Analyze malware behavior and attacks.", skills:"Reverse Engineering, Sandboxing", salary:"8 - 26 LPA"}
+    ]
+  }
 };
 
-function loadCareer() {
-    const branch = document.getElementById("branch").value;
-    const box = document.getElementById("careerBox");
-    const branchData = careerData[branch];
-
-    if (!branchData) {
-        document.getElementById("careerCount").textContent = "0 roles";
-        document.getElementById("careerBranchName").textContent = "Select a branch to begin";
-        box.innerHTML = `
-            <div class="career-empty-state">
-                <strong>Your career paths will appear here.</strong>
-                <span>Select a branch above to explore roles, skills and salary ranges.</span>
-            </div>
-        `;
-        return;
-    }
-
-    document.getElementById("careerCount").textContent = `${branchData.roles.length} roles`;
-    document.getElementById("careerBranchName").textContent = branchData.label;
-    box.innerHTML = branchData.roles.map((career, index) => `
-        <button class="career-card" type="button" style="--career-delay:${index * 55}ms"
-            onclick="showCareer('${branch}', ${index})">
-            <span class="career-mark">${career.mark}</span>
-            <span class="career-card-copy">
-                <strong>${career.title}</strong>
-                <span>${career.skills}</span>
-            </span>
-            <span class="career-salary">${career.salary}</span>
-            <span class="career-card-action">View career path <b aria-hidden="true">&rarr;</b></span>
-        </button>
-    `).join("");
+function toggleCareerPicker(event){
+  event.stopPropagation();
+  document.getElementById("careerPicker")?.classList.toggle("open");
 }
 
-function showCareer(branch, index) {
-    const career = careerData[branch]?.roles[index];
-    if (!career) return;
+function chooseCareer(value,label){
+  document.getElementById("branch").value = value;
+  document.getElementById("careerSelectedText").textContent = label;
+  document.getElementById("careerPicker")?.classList.remove("open");
 
-    const encodedTitle = encodeURIComponent(career.title);
-    document.getElementById("careerDialogContent").innerHTML = `
-        <span class="career-dialog-mark">${career.mark}</span>
-        <p class="career-dialog-label">Career profile</p>
-        <h2 id="careerDialogTitle">${career.title}</h2>
-        <div class="career-dialog-facts">
-            <div><span>Core skills</span><strong>${career.skills}</strong></div>
-            <div><span>Typical salary</span><strong>${career.salary}</strong></div>
-        </div>
-        <div class="career-resource-grid">
-            <a href="https://roadmap.sh/" target="_blank" rel="noopener">Roadmap</a>
-            <a href="https://www.youtube.com/results?search_query=${encodedTitle}+course" target="_blank" rel="noopener">Courses</a>
-            <a href="https://www.google.com/search?q=${encodedTitle}+interview+questions" target="_blank" rel="noopener">Interviews</a>
-            <a href="https://www.linkedin.com/jobs/search/?keywords=${encodedTitle}" target="_blank" rel="noopener">Jobs</a>
-        </div>
-    `;
+  document.querySelectorAll(".career-picker-menu button").forEach(btn=>{
+    btn.classList.toggle("active", btn.textContent.trim() === label);
+  });
 
-    document.getElementById("careerDetail").classList.remove("hidden");
-    document.body.classList.add("dialog-open");
+  loadCareer();
 }
 
-function closeCareer() {
-    document.getElementById("careerDetail").classList.add("hidden");
-    document.body.classList.remove("dialog-open");
-}
-
-document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeCareer();
+document.addEventListener("click",()=>{
+  document.getElementById("careerPicker")?.classList.remove("open");
 });
+
+function escapeHtml(value){
+  return String(value ?? "").replace(/[&<>'"]/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    "'":"&#39;",
+    '"':"&quot;"
+  }[char]));
+}
+
+function loadCareer(){
+  const branch = document.getElementById("branch").value;
+  const box = document.getElementById("careerBox");
+  const count = document.getElementById("careerCount");
+  const name = document.getElementById("careerBranchName");
+
+  if(!branch || !careerData[branch]){
+    count.textContent = "0 roles";
+    name.textContent = "Select Career";
+    box.innerHTML = `
+      <div class="career-empty-final">
+        <h2>Select Career</h2>
+        <p>Choose category to explore unique career paths.</p>
+      </div>`;
+    return;
+  }
+
+  const data = careerData[branch];
+  count.textContent = data.roles.length + " roles";
+  name.textContent = data.label;
+
+  box.innerHTML = data.roles.map((role,index)=>`
+    <button type="button" class="career-card-final" onclick="showCareer('${branch}',${index})">
+      <div class="career-icon-final">${escapeHtml(role.mark)}</div>
+      <h2>${escapeHtml(role.title)}</h2>
+      <p>${escapeHtml(role.desc)}</p>
+      <div class="career-line-final"></div>
+      <h4>Skills:</h4>
+      <strong>${escapeHtml(role.skills)}</strong>
+      <h4>Salary:</h4>
+      <strong>${escapeHtml(role.salary)}</strong>
+      <span>View Details →</span>
+    </button>
+  `).join("");
+}
+
+function showCareer(branch,index){
+  const role = careerData[branch].roles[index];
+  const q = encodeURIComponent(role.title);
+
+  document.getElementById("careerDialogContent").innerHTML = `
+    <div class="career-icon-final">${escapeHtml(role.mark)}</div>
+    <h2>${escapeHtml(role.title)}</h2>
+    <p>${escapeHtml(role.desc)}</p>
+    <p><b>Skills:</b> ${escapeHtml(role.skills)}</p>
+    <p><b>Salary:</b> ${escapeHtml(role.salary)}</p>
+    <div class="career-modal-links">
+      <a target="_blank" href="https://www.google.com/search?q=${q}+roadmap">Roadmap</a>
+      <a target="_blank" href="https://www.youtube.com/results?search_query=${q}+course">Course</a>
+      <a target="_blank" href="https://www.google.com/search?q=${q}+interview+questions">Interview</a>
+      <a target="_blank" href="https://www.linkedin.com/jobs/search/?keywords=${q}">Jobs</a>
+    </div>
+  `;
+
+  document.getElementById("careerDetail").classList.remove("hidden");
+}
+
+function closeCareer(){
+  document.getElementById("careerDetail").classList.add("hidden");
+}
 </script>
-<script src="script.js?v=20260613-6"></script>
+
 </body>
 </html>
-
-
-
-
